@@ -1,0 +1,168 @@
+.experience {
+  min-height: 100vh;
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.experience-card {
+  background: rgba(143, 137, 144, 0.05);
+  border: 1px solid rgba(44, 219, 41, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.experience-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(44, 219, 41, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.experience-card:hover {
+  border-color: #2cdb29;
+  box-shadow: 0 8px 30px rgba(44, 219, 41, 0.2);
+  transform: translateY(-5px);
+}
+
+.experience-card:hover::before {
+  opacity: 1;
+}
+
+.experience-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  filter: grayscale(1) brightness(1.5);
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.experience-company {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.experience-period {
+  padding: 0.4rem 1rem;
+  background: rgba(44, 219, 41, 0.1);
+  color: #2cdb29;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+}
+
+.experience-role {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2cdb29;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.experience-description {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #8f8990;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.experience-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.skill-tag {
+  padding: 0.5rem 1rem;
+  background: rgba(44, 219, 41, 0.1);
+  border: 1px solid rgba(44, 219, 41, 0.3);
+  border-radius: 20px;
+  color: #2cdb29;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(44, 219, 41, 0.2);
+  border-color: #2cdb29;
+  transform: translateY(-2px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .experience {
+    padding: 4rem 1rem;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .experience-card {
+    padding: 1.5rem;
+  }
+
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .experience-company {
+    font-size: 1.4rem;
+  }
+
+  .experience-role {
+    font-size: 1.1rem;
+  }
+}
