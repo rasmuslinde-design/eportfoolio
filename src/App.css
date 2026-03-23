@@ -1,5 +1,17 @@
 main {
   position: relative;
+  z-index: 10;
+}
+
+html,
+body {
+  background: #0e0f12;
+  color: #fff;
+}
+
+/* Make sure the app content always paints above the fixed background layer */
+#root {
+  position: relative;
   z-index: 1;
 }
 

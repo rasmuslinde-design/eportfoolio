@@ -1,3 +1,4 @@
+import LogoLoop from "../LogoLoop";
 import "./Skills.css";
 
 const Skills = () => {
@@ -5,28 +6,37 @@ const Skills = () => {
     {
       category: "Frontend",
       items: [
-        { name: "HTML & CSS", level: 90 },
-        { name: "Sass", level: 85 },
-        { name: "JavaScript", level: 85 },
-        { name: "React", level: 80 },
+        { name: "HTML & CSS" },
+        { name: "Sass" },
+        { name: "JavaScript" },
+        { name: "React" },
       ],
     },
     {
       category: "3D & Animation",
       items: [
-        { name: "React Three Fiber", level: 75 },
-        { name: "Drei", level: 70 },
-        { name: "Rapier Physics", level: 65 },
+        { name: "React Three Fiber" },
+        { name: "Drei" },
+        { name: "Rapier Physics" },
       ],
     },
     {
       category: "Soft Skills",
       items: [
-        { name: "Technical Problem Solving", level: 90 },
-        { name: "Teamwork", level: 95 },
-        { name: "Communication", level: 85 },
+        { name: "Technical Problem Solving" },
+        { name: "Teamwork" },
+        { name: "Communication" },
       ],
     },
+  ];
+
+  const techLogos = [
+    { src: "/assets/html1.jpg", alt: "HTML", href: "#" },
+    { src: "/assets/css1.jpg", alt: "CSS", href: "#" },
+    { src: "/assets/js1.png", alt: "JavaScript", href: "#" },
+    { src: "/assets/react1.jpg", alt: "React", href: "#" },
+    { src: "/assets/sass1.jpg", alt: "Sass", href: "#" },
+    { src: "/assets/tailwind1.png", alt: "Tailwind CSS", href: "#" },
   ];
 
   return (
@@ -38,24 +48,41 @@ const Skills = () => {
           {skills.map((skillGroup, index) => (
             <div key={index} className="skill-category">
               <h3 className="category-title">{skillGroup.category}</h3>
-              <div className="skill-items">
+              <div className="skill-items skill-cards">
                 {skillGroup.items.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="skill-item">
-                    <div className="skill-header">
-                      <span className="skill-name">{skill.name}</span>
-                      <span className="skill-percentage">{skill.level}%</span>
-                    </div>
-                    <div className="skill-bar">
-                      <div
-                        className="skill-progress"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
+                  <div key={skillIndex} className="skill-card cursor-target">
+                    <span className="skill-name">{skill.name}</span>
                   </div>
                 ))}
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Tech Logos Loop */}
+        <div className="tech-logos-section">
+          <div
+            style={{
+              height: "150px",
+              position: "relative",
+              overflow: "hidden",
+              margin: "2rem 0",
+            }}
+            className="cursor-target"
+          >
+            <LogoLoop
+              logos={techLogos}
+              speed={100}
+              direction="left"
+              logoHeight={80}
+              gap={60}
+              hoverSpeed={0}
+              scaleOnHover
+              fadeOut
+              fadeOutColor="#000000"
+              ariaLabel="Technology stack"
+            />
+          </div>
         </div>
 
         <div className="languages-section">
