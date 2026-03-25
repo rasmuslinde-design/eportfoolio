@@ -102,14 +102,18 @@ function DockIcon({ children, className = "" }) {
   return <div className={`dock-icon ${className}`}>{children}</div>;
 }
 
+function DockMiniLabel({ children, className = "" }) {
+  return <div className={`dock-mini-label ${className}`}>{children}</div>;
+}
+
 export default function Dock({
   items,
   className = "",
   spring = { mass: 0.25, stiffness: 95, damping: 22 },
   magnification = 56,
   distance = 140,
-  panelHeight = 64,
-  baseItemSize = 50,
+  panelHeight = 68,
+  baseItemSize = 54,
 }) {
   const mouseX = useMotionValue(Infinity);
   const isHovered = useMotionValue(0);
@@ -148,7 +152,10 @@ export default function Dock({
             magnification={magnification}
             baseItemSize={baseItemSize}
           >
-            <DockIcon>{item.icon}</DockIcon>
+            <div className="dock-item-content" aria-label={item.label}>
+              <DockIcon>{item.icon}</DockIcon>
+              <DockMiniLabel>{item.label}</DockMiniLabel>
+            </div>
             <DockLabel>{item.label}</DockLabel>
           </DockItem>
         ))}

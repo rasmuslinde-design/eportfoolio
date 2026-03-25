@@ -1,0 +1,29 @@
+:root {
+  --font-body:
+    "Roboto", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial,
+    "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  --font-heading:
+    "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial,
+    "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+html,
+body {
+  font-family: var(--font-body);
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+/* Buttons + form controls */
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
