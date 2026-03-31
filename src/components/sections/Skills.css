@@ -13,15 +13,17 @@
 
 .skill-category {
   background: rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(44, 219, 41, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   padding: 2rem;
   transition: all 0.3s ease;
 }
 
 .skill-category:hover {
-  border-color: #2cdb29;
-  box-shadow: 0 8px 30px rgba(44, 219, 41, 0.2);
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow:
+    0 0 15px rgba(255, 255, 255, 0.3),
+    0 0 15px rgba(0, 255, 0, 0.2);
   transform: translateY(-5px);
 }
 
@@ -52,7 +54,7 @@
   text-align: center;
   padding: 1rem 1.25rem;
   border-radius: 14px;
-  border: 1px solid rgba(44, 219, 41, 0.22);
+  border: 1px solid rgba(0, 255, 0, 0.18);
   background: rgba(143, 137, 144, 0.06);
   transition:
     transform 0.25s ease,
@@ -63,14 +65,30 @@
 
 .skill-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(44, 219, 41, 0.7);
-  box-shadow: 0 10px 25px rgba(44, 219, 41, 0.12);
+  border-color: rgba(0, 255, 0, 0.35);
+  box-shadow: 0 10px 25px rgba(0, 255, 0, 0.12);
 }
 
 .skill-name {
   font-size: 1.1rem;
   font-weight: 500;
   color: #fff;
+}
+
+/* Tech logo loop: muted by default, color on hover */
+.skills .tech-logos-section .logoloop__item img {
+  filter: grayscale(1);
+  opacity: 0.5;
+  transition:
+    filter 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skills .tech-logos-section .logoloop__item:hover img,
+.skills .tech-logos-section .logoloop__item:focus-within img {
+  filter: grayscale(0);
+  opacity: 1;
 }
 
 /* Languages Section */
