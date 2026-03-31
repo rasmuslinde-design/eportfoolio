@@ -12,7 +12,7 @@
 }
 
 .skill-category {
-  background: rgba(143, 137, 144, 0.05);
+  background: rgba(0, 0, 0, 0.9);
   border: 1px solid rgba(44, 219, 41, 0.2);
   border-radius: 16px;
   padding: 2rem;
@@ -28,7 +28,7 @@
 .category-title {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #2cdb29;
+  color: #fff;
   margin-bottom: 1.5rem;
   text-align: center;
 }

@@ -39,7 +39,7 @@
 }
 
 .about-card {
-  background: rgba(143, 137, 144, 0.05);
+  background: rgba(0, 0, 0, 0.9);
   border: 1px solid rgba(44, 219, 41, 0.2);
   border-radius: 16px;
   padding: 2rem;
@@ -88,7 +88,7 @@
 .about-card p {
   font-size: 1rem;
   line-height: 1.8;
-  color: #8f8990;
+  color: rgba(255, 255, 255, 0.9);
   position: relative;
   z-index: 1;
 }

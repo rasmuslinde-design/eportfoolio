@@ -68,7 +68,6 @@ const Skills = () => {
               overflow: "hidden",
               margin: "2rem 0",
             }}
-            className="cursor-target"
           >
             <LogoLoop
               logos={techLogos}
