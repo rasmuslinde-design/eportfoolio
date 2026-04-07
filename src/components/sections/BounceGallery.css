@@ -1,0 +1,21 @@
+.bounce-gallery {
+  padding: 2.5rem 2rem 1.5rem;
+  position: relative;
+}
+
+.bounce-gallery__wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Keep the demo sizing consistent and prevent layout shift */
+.bounce-gallery .custom-bounceCards {
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .bounce-gallery {
+    padding: 2.25rem 1rem 1rem;
+  }
+}

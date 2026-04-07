@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import ContactMe from "./components/ContactMe";
 import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
+import BounceGallery from "./components/sections/BounceGallery";
 import Skills from "./components/sections/Skills";
 import Education from "./components/sections/Education";
 import Experience from "./components/sections/Experience";
@@ -114,6 +115,7 @@ function App() {
         <main>
           <Hero />
           <About />
+          <BounceGallery />
           <Skills />
           <Education />
           <Experience />
