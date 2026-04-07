@@ -26,8 +26,8 @@ const BounceGallery = () => {
           <BounceCards
             className="custom-bounceCards"
             images={images}
-            containerWidth={500}
-            containerHeight={280}
+            containerWidth={720}
+            containerHeight={405}
             animationDelay={1}
             animationStagger={0.08}
             easeType="elastic.out(1, 0.5)"
