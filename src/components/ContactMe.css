@@ -1,0 +1,146 @@
+.contact-me {
+  display: inline-flex;
+  align-items: flex-end;
+  pointer-events: auto;
+}
+
+.contact-me__inner {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Button styling: match Dock's glass look + typography */
+.contact-me__button {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.78);
+  color: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.45);
+  user-select: none;
+}
+
+.contact-me__button:hover {
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow:
+    0 18px 70px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.contact-me__button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.75);
+  outline-offset: 4px;
+}
+
+.contact-me__panel {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 10px);
+  width: min(380px, calc(100vw - 40px));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.88);
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.55);
+  padding: 0.9rem 1rem;
+
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.contact-me__panel.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.contact-me__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-me__row:last-of-type {
+  border-bottom: 0;
+}
+
+.contact-me__label {
+  flex: 0 0 auto;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.contact-me__value {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.contact-me__link {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-family: var(--font-body);
+  transition: all 0.3s ease;
+}
+
+.contact-me__link:hover {
+  color: rgba(44, 219, 41, 0.95);
+}
+
+.contact-me__text {
+  color: rgba(255, 255, 255, 0.84);
+  font-family: var(--font-body);
+}
+
+.contact-me__pill {
+  appearance: none;
+  border: 1px solid rgba(44, 219, 41, 0.22);
+  background: rgba(143, 137, 144, 0.06);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+}
+
+.contact-me__pill:hover {
+  border-color: rgba(44, 219, 41, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 255, 0, 0.12);
+}
+
+.contact-me__hint {
+  margin-top: 0.65rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .contact-me__button {
+    border-radius: 14px;
+  }
+
+  .contact-me__panel {
+    border-radius: 14px;
+  }
+}

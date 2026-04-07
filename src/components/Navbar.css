@@ -1,18 +1,5 @@
-.rb-navbar-container {
-  /* Fallback styling (positioning is enforced inline in Navbar.jsx to avoid CSS collisions) */
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 20px;
-  z-index: 99999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .rb-navbar-container {
-    bottom: 10px;
-  }
+.rb-navbar {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: flex-end;
 }

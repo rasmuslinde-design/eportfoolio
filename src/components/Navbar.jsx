@@ -1,5 +1,4 @@
 import React from "react";
-import { createPortal } from "react-dom";
 import Dock from "./Dock";
 import {
   VscHome,
@@ -52,27 +51,10 @@ const Navbar = () => {
     },
   ];
 
-  return createPortal(
-    <div
-      className="rb-navbar-container"
-      role="navigation"
-      aria-label="Primary"
-      style={{
-        position: "fixed",
-        left: 0,
-        right: 0,
-        bottom: 20,
-        zIndex: 99999,
-        display: "flex",
-        justifyContent: "center",
-        pointerEvents: "none",
-      }}
-    >
-      <div style={{ pointerEvents: "auto" }}>
-        <Dock items={dockItems} />
-      </div>
-    </div>,
-    document.body,
+  return (
+    <nav className="rb-navbar" role="navigation" aria-label="Primary">
+      <Dock items={dockItems} />
+    </nav>
   );
 };
 

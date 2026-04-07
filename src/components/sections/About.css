@@ -4,91 +4,322 @@
   position: relative;
 }
 
+:root {
+  --about-accent: #2cdb29;
+  --about-border: rgba(255, 255, 255, 0.2);
+  --about-border-strong: rgba(255, 255, 255, 0.95);
+  --about-surface: rgba(0, 0, 0, 0.86);
+}
+
+/* ScrollStack wrapper (restored) */
 .about-scroll-stack {
   /* Leave space so the bottom fixed Dock navbar doesn't cover the last card */
   padding-bottom: 30px;
 }
 
-/* ScrollStack takes over layout; ensure it behaves inside the section */
 .about-scroll-stack__scroller {
   height: auto;
   overflow: visible;
   border-radius: 20px;
 }
 
-/* ScrollStack.css defaults create an inner scroll container; in About we use window scroll. */
 .about .scroll-stack-scroller {
   height: auto;
   overflow: visible;
   overscroll-behavior: auto;
 }
 
-/* Override ReactBits card styling for this section */
+/* Controls hero -> about gap (kept from earlier tuning) */
 .about .scroll-stack-inner {
-  padding: 18vh 2rem 7rem;
+  padding: 4.5vh 2rem 7rem;
 }
 
-.about .scroll-stack-card {
+.about-stack-card {
   height: auto;
   min-height: 320px;
-  border-radius: 22px;
   background: transparent;
   border: 0;
   padding: 0;
   box-shadow: none;
-  /* Reduce perceived jitter from rapid transform updates */
   transition:
     transform 80ms linear,
     filter 80ms linear;
 }
 
-/* StarBorder wrapper on ScrollStack cards */
-.about-star-border {
-  width: 100%;
-  display: block;
-  border-radius: 22px;
-}
-
-.about-star-border__frame {
-  width: 100%;
-  display: block;
-  border-radius: 22px;
-}
-
-.about-star-border__frame .inner-content {
-  width: 100%;
-  background: transparent;
-  border: 0;
-  border-radius: 22px;
-  padding: 0;
-  text-align: left;
-}
-
-.about-card-content {
+.about-interactive-card {
   background: rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 22px;
-  padding: 2.25rem;
   box-shadow: 0 18px 70px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
 }
 
-.about .scroll-stack-card h3 {
+.about-interactive-card:hover {
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow:
+    0 18px 70px rgba(0, 0, 0, 0.55),
+    0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.about-card-header {
+  padding: 1.6rem 1.9rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-card-title {
+  margin: 0;
   font-family: var(--font-heading);
-  font-size: clamp(2.25rem, 3vw, 3rem);
-  font-weight: 900;
-  color: #2cdb29;
-  margin: 0.75rem 0 1rem;
+  font-size: clamp(1.9rem, 2.3vw, 2.4rem);
   letter-spacing: -0.02em;
+  font-weight: 900;
+  color: #fff;
 }
 
-.about .scroll-stack-card p {
-  color: rgba(255, 255, 255, 0.9);
+/* Ensure identical header-to-content spacing for both cards */
+.about-card-header {
+  padding-bottom: 1.1rem;
+}
+
+.about-card-body {
+  padding: 1.6rem 1.9rem 1.9rem;
+}
+
+.about-split {
+  display: grid;
+  grid-template-columns: 3fr 2fr; /* default (~60/40) */
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* Card 1 needs a slightly wider timeline column for breathing room */
+.about [aria-label="The Evolution"] .about-split {
+  grid-template-columns: 55% 45%;
+}
+
+.about-split__left {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.about-sentence {
+  margin: 0;
   font-family: var(--font-body);
+  color: rgba(255, 255, 255, 0.82);
   line-height: 1.75;
-  max-width: 68ch;
+  font-size: 1.02rem;
+}
+
+.about-sentence.is-active {
+  color: #ffffff;
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.22);
+}
+
+.about-sentence.is-active[data-id="education"],
+.about-sentence.is-active[data-id="past_life"] {
+  color: rgba(44, 219, 41, 0.95);
+  text-shadow: 0 0 14px rgba(44, 219, 41, 0.28);
+}
+
+.about-sentence.is-active[data-id="football"] {
+  color: rgba(44, 219, 41, 0.95);
+  text-shadow: 0 0 14px rgba(44, 219, 41, 0.28);
+}
+
+.about-sentence.is-active[data-id="mindset"] {
+  color: rgba(44, 219, 41, 0.95);
+  text-shadow: 0 0 14px rgba(44, 219, 41, 0.28);
+}
+
+/* Timeline */
+.about-timeline {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 1.25rem 1.1rem;
+  background: rgba(143, 137, 144, 0.06);
+  display: grid;
+  gap: 0.9rem;
+  min-height: 180px;
+}
+
+.about-timeline__line {
+  position: absolute;
+  left: 16px;
+  top: 18px;
+  bottom: 18px;
+  width: 1px;
+  background: rgba(44, 219, 41, 0.9);
+  box-shadow: 0 0 18px rgba(44, 219, 41, 0.18);
+}
+
+.about-timeline__item {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  padding: 0.7rem;
+  border-radius: 12px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.about-timeline__item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+    0 0 18px rgba(255, 255, 255, 0.12);
+}
+
+.about-timeline__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(44, 219, 41, 0.95);
+  box-shadow:
+    0 0 0 3px rgba(44, 219, 41, 0.18),
+    0 0 14px rgba(44, 219, 41, 0.35);
+  flex: 0 0 auto;
+}
+
+.about-timeline__text {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.about-timeline__label {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.62);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.about-timeline__value {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Code-bio (VS Code-ish) */
+.about-code {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.about-code__titlebar {
+  padding: 0.7rem 0.9rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.about-code__dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.about-code__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35) inset;
+}
+
+.about-code__dot--red {
+  background: #ff5f57;
+}
+
+.about-code__dot--yellow {
+  background: #febc2e;
+}
+
+.about-code__dot--green {
+  background: #28c840;
+}
+
+.about-code__lang {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.about-code__pre {
+  margin: 0;
+  padding: 1rem 1.1rem 1.1rem;
+  overflow: auto;
+}
+
+.about-code__code {
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.about-code__line {
+  display: block;
+  white-space: pre;
+}
+
+.about-code__kw {
+  color: #c586c0;
+}
+
+.about-code__op {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.about-code__brace {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.about-code__semi {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.about-code__key {
+  color: #9cdcfe;
+}
+
+.about-code__str {
+  color: #ce9178;
+}
+
+.about-code__hot {
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0.05rem 0.2rem;
+}
+
+.about-code__hot:hover,
+.about-code__hot:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+    0 0 16px rgba(44, 219, 41, 0.12);
 }
 
 @media (max-width: 768px) {
+  .about {
+    padding: 4rem 1rem;
+  }
+
   .about-scroll-stack {
     padding-bottom: 35px;
   }
@@ -99,7 +330,6 @@
     overflow: visible;
   }
 
-  /* On mobile, don't lock into an inner scroller (better usability) */
   .about .scroll-stack-scroller {
     overflow: visible;
     height: auto;
@@ -109,34 +339,16 @@
     padding: 0 0 2rem;
   }
 
-  .about .scroll-stack-card {
-    min-height: auto;
-    border-radius: 18px;
+  .about-card-header {
+    padding: 1.2rem 1.2rem 1rem;
   }
 
-  .about-star-border {
-    border-radius: 18px;
+  .about-card-body {
+    padding: 1.2rem;
   }
 
-  .about-star-border__frame {
-    border-radius: 18px;
-  }
-
-  .about-star-border__frame .inner-content {
-    border-radius: 18px;
-  }
-
-  .about-card-content {
-    border-radius: 18px;
-    padding: 1.5rem;
-  }
-
-  .about .scroll-stack-card h3 {
-    font-size: 2rem;
-  }
-
-  .about .scroll-stack-card p {
-    max-width: 100%;
+  .about-split {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -173,20 +385,13 @@
   filter: grayscale(1) brightness(1.5);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .about {
-    padding: 4rem 1rem;
-  }
-}
-
 /* WCAG - High contrast for readability */
 @media (prefers-contrast: high) {
-  .about .scroll-stack-card {
+  .about-interactive-card {
     border-color: rgba(255, 255, 255, 0.95);
   }
 
-  .about .scroll-stack-card p {
+  .about-sentence {
     color: #fff;
   }
 }

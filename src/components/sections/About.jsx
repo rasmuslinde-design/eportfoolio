@@ -1,8 +1,24 @@
 import "./About.css";
+import { useMemo, useState } from "react";
 import ScrollStack, { ScrollStackItem } from "../ScrollStack";
-import StarBorder from "../StarBorder";
 
 const About = () => {
+  const [hoveredEvolution, setHoveredEvolution] = useState(null);
+  const [hoveredCore, setHoveredCore] = useState(null);
+
+  const isActive = useMemo(() => {
+    return {
+      evolution: {
+        education: hoveredEvolution === "education",
+        past_life: hoveredEvolution === "past_life",
+      },
+      core: {
+        mindset: hoveredCore === "mindset",
+        football: hoveredCore === "football",
+      },
+    };
+  }, [hoveredCore, hoveredEvolution]);
+
   return (
     <section id="about" className="about">
       <div className="section-container">
@@ -19,85 +35,221 @@ const About = () => {
             scaleEndPosition="10%"
             useWindowScroll
           >
-            <ScrollStackItem itemClassName="about-stack-card about-star-border">
-              <StarBorder
-                as="div"
-                className="about-star-border__frame"
-                color="#ffffff"
-                thickness={2.5}
-                speed="10s"
+            <ScrollStackItem itemClassName="about-stack-card">
+              <article
+                className="about-interactive-card"
+                aria-label="The Evolution"
               >
-                <div className="about-card-content">
-                  <h3>My story</h3>
-                  <p>
-                    My name is Rasmus Linde, I am 29 years old, and I am a
-                    software developer with a passion for building functional
-                    and efficient digital solutions. I am driven by the
-                    challenge of turning complex ideas into clean, working code.
-                  </p>
-                  <p>
-                    My transition into software development was a natural
-                    evolution. I previously graduated from VOCO as a
-                    Mechatronics Technician, a field that combines mechanics,
-                    electronics, and programming. During those studies, I
-                    discovered that while I enjoyed the technical complexity of
-                    mechatronics, my true passion and strength lay in the coding
-                    and software side of the projects.
-                  </p>
+                <header className="about-card-header">
+                  <h3 className="about-card-title">
+                    From Hardware to Software
+                  </h3>
+                </header>
+
+                <div className="about-card-body">
+                  <div className="about-split">
+                    <div className="about-split__right" aria-label="Timeline">
+                      <div
+                        className="about-timeline"
+                        onMouseLeave={() => setHoveredEvolution(null)}
+                      >
+                        <div
+                          className="about-timeline__line"
+                          aria-hidden="true"
+                        />
+
+                        <button
+                          type="button"
+                          className="about-timeline__item transition-all duration-300"
+                          onMouseEnter={() => setHoveredEvolution("education")}
+                          aria-label="Present: Software Development @ VOCO"
+                        >
+                          <span
+                            className="about-timeline__dot"
+                            aria-hidden="true"
+                          />
+                          <span className="about-timeline__text">
+                            <span className="about-timeline__value">
+                              Present: Software Development @ VOCO
+                            </span>
+                          </span>
+                        </button>
+
+                        <button
+                          type="button"
+                          className="about-timeline__item transition-all duration-300"
+                          onMouseEnter={() => setHoveredEvolution("past_life")}
+                          aria-label="Past: Mechatronics Foundation"
+                        >
+                          <span
+                            className="about-timeline__dot"
+                            aria-hidden="true"
+                          />
+                          <span className="about-timeline__text">
+                            <span className="about-timeline__value">
+                              Past: Mechatronics Foundation
+                            </span>
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="about-split__left">
+                      <p
+                        className={`about-sentence transition-all duration-300 ${
+                          isActive.evolution.education ? "is-active" : ""
+                        }`}
+                        data-id="education"
+                      >
+                        My name is Rasmus Linde, a 29-year-old Software
+                        Developer with a unique background in Mechatronics.
+                        Currently refining my expertise at VOCO, I bridge the
+                        gap between mechanical precision and digital innovation.
+                      </p>
+
+                      <p
+                        className={`about-sentence transition-all duration-300 ${
+                          isActive.evolution.past_life ? "is-active" : ""
+                        }`}
+                        data-id="past_life"
+                      >
+                        My transition into software development was a natural
+                        evolution; I previously graduated from VOCO as a
+                        Mechatronics Technician, a field that combines
+                        mechanics, electronics, and programming.
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </StarBorder>
+              </article>
             </ScrollStackItem>
 
-            <ScrollStackItem itemClassName="about-stack-card about-star-border">
-              <StarBorder
-                as="div"
-                className="about-star-border__frame"
-                color="#ffffff"
-                thickness={2.5}
-                speed="10s"
-              >
-                <div className="about-card-content">
-                  <h3>Education & VOCO</h3>
-                  <p>
-                    I am currently studying software development at VOCO (Tartu
-                    Vocational College). My studies are highly practical,
-                    focusing on modern programming principles, database
-                    management, and software architecture. This hands-on
-                    environment allows me to constantly apply theory to
-                    real-world projects.
-                  </p>
-                </div>
-              </StarBorder>
-            </ScrollStackItem>
+            <ScrollStackItem itemClassName="about-stack-card">
+              <article className="about-interactive-card" aria-label="The Core">
+                <header className="about-card-header">
+                  <h3 className="about-card-title">Mindset & Discipline</h3>
+                </header>
 
-            <ScrollStackItem itemClassName="about-stack-card about-star-border">
-              <StarBorder
-                as="div"
-                className="about-star-border__frame"
-                color="#ffffff"
-                thickness={2.5}
-                speed="10s"
-              >
-                <div className="about-card-content">
-                  <h3>Personality & hobbies</h3>
-                  <p>
-                    Outside of my professional life, I have a deep-rooted
-                    background in sports. I played football competitively for 11
-                    years, including representing the national youth team.
-                    Today, I remain a huge sports enthusiast and enjoy watching
-                    a wide variety of different sports.
-                  </p>
-                  <p>
-                    My primary focus has been on building a strong technical
-                    foundation and maintaining a portfolio of my work on GitHub.
-                    I am dedicated to expanding my skill set through practical
-                    projects and am eager to contribute to collaborative
-                    development teams. My goal is to apply my knowledge from
-                    VOCO to create impactful software and keep growing within
-                    the industry.
-                  </p>
+                <div className="about-card-body">
+                  <div className="about-split">
+                    <div className="about-split__left">
+                      <p
+                        className={`about-sentence transition-all duration-300 ${
+                          isActive.core.mindset ? "is-active" : ""
+                        }`}
+                        data-id="mindset"
+                      >
+                        I approach coding with the same precision I used in
+                        mechanics—focusing on structural integrity and
+                        efficiency.
+                      </p>
+
+                      <p
+                        className={`about-sentence transition-all duration-300 ${
+                          isActive.core.football ? "is-active" : ""
+                        }`}
+                        data-id="football"
+                      >
+                        I draw my discipline and team-player attitude from 11
+                        years of competitive football, representing national
+                        youth teams and always pushing for collective growth.
+                      </p>
+                    </div>
+
+                    <div className="about-split__right" aria-label="Code bio">
+                      <div
+                        className="about-code"
+                        onMouseLeave={() => setHoveredCore(null)}
+                      >
+                        <div className="about-code__titlebar">
+                          <span className="about-code__dots" aria-hidden="true">
+                            <span className="about-code__dot about-code__dot--red" />
+                            <span className="about-code__dot about-code__dot--yellow" />
+                            <span className="about-code__dot about-code__dot--green" />
+                          </span>
+                          <span className="about-code__lang">JavaScript</span>
+                        </div>
+
+                        <pre
+                          className="about-code__pre"
+                          aria-label="bio object"
+                        >
+                          <code className="about-code__code">
+                            <span className="about-code__line">
+                              <span className="about-code__kw">const</span> bio{" "}
+                              <span className="about-code__op">=</span>{" "}
+                              <span className="about-code__brace">&#123;</span>
+                            </span>
+                            <span className="about-code__line">
+                              <span className="about-code__key">role</span>:{" "}
+                              <span className="about-code__str">
+                                &quot;Problem Solver&quot;
+                              </span>
+                              ,
+                            </span>
+                            <span className="about-code__line">
+                              <span
+                                className="about-code__key about-code__hot transition-all duration-300"
+                                onMouseEnter={() => setHoveredCore("mindset")}
+                                role="button"
+                                tabIndex={0}
+                                onFocus={() => setHoveredCore("mindset")}
+                              >
+                                education
+                              </span>
+                              :{" "}
+                              <span className="about-code__str">
+                                &quot;VOCO&quot;
+                              </span>
+                              ,
+                            </span>
+                            <span className="about-code__line">
+                              <span
+                                className="about-code__key about-code__hot transition-all duration-300"
+                                onMouseEnter={() => setHoveredCore("mindset")}
+                                role="button"
+                                tabIndex={0}
+                                onFocus={() => setHoveredCore("mindset")}
+                              >
+                                past_life
+                              </span>
+                              :{" "}
+                              <span className="about-code__str">
+                                &quot;Mechatronics&quot;
+                              </span>
+                              ,
+                            </span>
+                            <span className="about-code__line">
+                              <span
+                                className="about-code__key about-code__hot transition-all duration-300"
+                                onMouseEnter={() => setHoveredCore("football")}
+                                role="button"
+                                tabIndex={0}
+                                onFocus={() => setHoveredCore("football")}
+                              >
+                                hobbies
+                              </span>
+                              : <span className="about-code__brace">[</span>
+                              <span className="about-code__str">
+                                &quot;Football&quot;
+                              </span>
+                              ,{" "}
+                              <span className="about-code__str">
+                                &quot;Tech&quot;
+                              </span>
+                              <span className="about-code__brace">]</span>
+                            </span>
+                            <span className="about-code__line">
+                              <span className="about-code__brace">&#125;</span>
+                              <span className="about-code__semi">;</span>
+                            </span>
+                          </code>
+                        </pre>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </StarBorder>
+              </article>
             </ScrollStackItem>
           </ScrollStack>
         </div>

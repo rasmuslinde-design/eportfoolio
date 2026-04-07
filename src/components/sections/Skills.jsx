@@ -83,22 +83,6 @@ const Skills = () => {
             />
           </div>
         </div>
-
-        <div className="languages-section">
-          <h3 className="category-title">Languages</h3>
-          <div className="languages">
-            <div className="language-card">
-              <span className="language-flag">🇪🇪</span>
-              <span className="language-name">Estonian</span>
-              <span className="language-level">Native</span>
-            </div>
-            <div className="language-card">
-              <span className="language-flag">🇬🇧</span>
-              <span className="language-name">English</span>
-              <span className="language-level">Fluent</span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
