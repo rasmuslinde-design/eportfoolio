@@ -6,6 +6,8 @@ import StarBorder from "./StarBorder";
 export default function BounceCards({
   className = "",
   images = [],
+  labels = [],
+  keywords = [],
   containerWidth = 400,
   containerHeight = 400,
   animationDelay = 0.5,
@@ -17,6 +19,7 @@ export default function BounceCards({
     "rotate(-3deg)",
     "rotate(-10deg) translate(85px)",
     "rotate(2deg) translate(170px)",
+    "rotate(6deg) translate(255px)",
   ],
   enableHover = true,
 }) {
@@ -83,7 +86,7 @@ export default function BounceCards({
           overwrite: "auto",
         });
       } else {
-        const offsetX = i < hoveredIdx ? -160 : 160;
+        const offsetX = i < hoveredIdx ? -220 : 220;
         const pushedTransform = getPushedTransform(baseTransform, offsetX);
 
         const distance = Math.abs(hoveredIdx - i);
@@ -152,6 +155,22 @@ export default function BounceCards({
             thickness={3}
           >
             <img className="image" src={src} alt={`card-${idx}`} />
+
+            <div className="bounceCardsOverlay" aria-hidden="true">
+              {!!labels[idx] && (
+                <div className="bounceCardsTitle">{labels[idx]}</div>
+              )}
+
+              {Array.isArray(keywords[idx]) && keywords[idx].length > 0 && (
+                <div className="bounceCardsTags">
+                  {keywords[idx].map((k) => (
+                    <span key={k} className="bounceCardsTag">
+                      {k}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
           </StarBorder>
         </div>
       ))}

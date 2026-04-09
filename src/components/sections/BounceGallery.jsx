@@ -8,14 +8,34 @@ const BounceGallery = () => {
     "https://picsum.photos/600/600?grayscale",
     "https://picsum.photos/700/700?grayscale",
     "https://picsum.photos/300/300?grayscale",
+    "https://picsum.photos/450/450?grayscale",
+  ];
+
+  const labels = [
+    "Üheleheline veebileht",
+    "Mitmeleheline veebileht",
+    "Hobileht",
+    "Epood",
+    "SYNC",
+    "TinyDungeon",
+  ];
+
+  const keywords = [
+    ["HTML", "CSS"],
+    ["HTML", "CSS"],
+    ["HTML", "CSS"],
+    ["HTML", "CSS", "JavaScript"],
+    ["React", "Tailwind CSS", "Vite"],
+    ["React", "A-Frame", "Zustand", "3D"],
   ];
 
   const transformStyles = [
-    "rotate(5deg) translate(-150px)",
-    "rotate(0deg) translate(-70px)",
+    "rotate(5deg) translate(-210px)",
+    "rotate(0deg) translate(-105px)",
     "rotate(-5deg)",
-    "rotate(5deg) translate(70px)",
-    "rotate(-5deg) translate(150px)",
+    "rotate(5deg) translate(105px)",
+    "rotate(-5deg) translate(210px)",
+    "rotate(7deg) translate(315px)",
   ];
 
   return (
@@ -26,7 +46,9 @@ const BounceGallery = () => {
           <BounceCards
             className="custom-bounceCards"
             images={images}
-            containerWidth={720}
+            labels={labels}
+            keywords={keywords}
+            containerWidth={980}
             containerHeight={405}
             animationDelay={1}
             animationStagger={0.08}
