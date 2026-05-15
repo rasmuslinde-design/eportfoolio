@@ -7,6 +7,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+.bounce-gallery__logos {
+  margin-top: 1.75rem;
+}
+
+.bounce-gallery__logosInner {
+  height: 150px;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Keep the demo sizing consistent and prevent layout shift */
@@ -14,8 +26,231 @@
   max-width: 100%;
 }
 
+.bounce-gallery__modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.bounce-gallery__modalWrap {
+  position: relative;
+  width: min(980px, 100%);
+}
+
+.bounce-gallery__modal {
+  width: 100%;
+  max-height: calc(100dvh - 4rem);
+  border-radius: 18px;
+  border: 1px solid rgba(44, 219, 41, 0.18);
+  background: #000;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.bounce-gallery__close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(0, 0, 0, 0.55);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.bounce-gallery__close:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.bounce-gallery__modalTitle {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 800;
+  font-size: 1.35rem;
+  font-family: var(--font-heading);
+}
+
+.bounce-gallery__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bounce-gallery__iconBtn {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+}
+
+.bounce-gallery__iconBtn:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.bounce-gallery__visitBtn {
+  height: 44px;
+  padding: 0 1.1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 0, 0.18);
+  background: rgba(143, 137, 144, 0.06);
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.bounce-gallery__visitBtn:hover {
+  border-color: rgba(0, 255, 0, 0.35);
+  box-shadow: 0 10px 25px rgba(0, 255, 0, 0.12);
+}
+
+.bounce-gallery__visitBtn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* 2x2 layout that matches user's quadrant language.
+   (-x,+y) preview | (+x,+y) meta
+   (-x,-y) tools   | (+x,-y) tech boxes */
+.bounce-gallery__grid {
+  padding: 1.25rem;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.bounce-gallery__panel {
+  min-width: 0;
+}
+
+.bounce-gallery__panel--meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bounce-gallery__panel--tools {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bounce-gallery__preview {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: min(320px, 31dvh);
+}
+
+.bounce-gallery__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.bounce-gallery__actions--center {
+  justify-content: center;
+}
+
+.bounce-gallery__desc {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.bounce-gallery__techTitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+  font-family: var(--font-heading);
+  margin: 0;
+}
+
+.bounce-gallery__techGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.6rem;
+}
+
+/* Tool cards inside the modal (keep crosshair via cursor-target) */
+.bounce-gallery__techGrid .skill-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 0.75rem;
+  min-height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+}
+
+.bounce-gallery__techGrid .skill-name {
+  font-size: 0.98rem;
+  line-height: 1;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 700;
+}
+
 @media (max-width: 640px) {
   .bounce-gallery {
     padding: 2.25rem 1rem 1rem;
+  }
+
+  .bounce-gallery__modalOverlay {
+    padding: 1rem;
+  }
+
+  .bounce-gallery__modal {
+    max-height: calc(100dvh - 2rem);
+  }
+
+  .bounce-gallery__close {
+    top: -10px;
+    right: -10px;
+  }
+
+  .bounce-gallery__grid {
+    padding: 1rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 0.85rem;
+  }
+
+  .bounce-gallery__preview {
+    max-height: 26dvh;
   }
 }

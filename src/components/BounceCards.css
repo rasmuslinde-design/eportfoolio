@@ -18,6 +18,12 @@
     filter 220ms ease,
     opacity 220ms ease,
     box-shadow 220ms ease;
+  cursor: pointer;
+}
+
+.card:focus-visible {
+  outline: 2px solid rgba(44, 219, 41, 0.6);
+  outline-offset: 4px;
 }
 
 .card.is-dimmed {

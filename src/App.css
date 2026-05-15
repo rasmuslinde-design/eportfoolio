@@ -22,6 +22,16 @@ body {
   padding: 0 2rem;
 }
 
+/* When the Projects modal is open, keep the bottom Dock/Contact widget from overlapping the dialog. */
+body[data-bounce-modal-open] .app-bottom-bar {
+  display: none;
+}
+
+/* Prevent background scroll while the modal dialog is open */
+body[data-bounce-modal-open] {
+  overflow: hidden;
+}
+
 /* Smooth scroll */
 @media (prefers-reduced-motion: no-preference) {
   html {

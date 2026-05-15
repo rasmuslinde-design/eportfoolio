@@ -8,10 +8,8 @@ import ContactMe from "./components/ContactMe";
 import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
 import BounceGallery from "./components/sections/BounceGallery";
-import Skills from "./components/sections/Skills";
 import Education from "./components/sections/Education";
 import Experience from "./components/sections/Experience";
-import Projects from "./components/sections/Projects";
 
 function App() {
   const contactWrapRef = useRef(null);
@@ -46,7 +44,7 @@ function App() {
         hideDefaultCursor
         parallaxOn
         hoverDuration={0.2}
-        targetSelector="#skills .cursor-target"
+        targetSelector=".cursor-target"
       />
 
       {/* Background effects */}
@@ -116,10 +114,8 @@ function App() {
           <Hero />
           <About />
           <BounceGallery />
-          <Skills />
           <Education />
           <Experience />
-          <Projects />
         </main>
       </ClickSpark>
     </>

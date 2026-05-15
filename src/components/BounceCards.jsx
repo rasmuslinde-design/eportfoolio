@@ -8,6 +8,7 @@ export default function BounceCards({
   images = [],
   labels = [],
   keywords = [],
+  onCardClick,
   containerWidth = 400,
   containerHeight = 400,
   animationDelay = 0.5,
@@ -146,6 +147,19 @@ export default function BounceCards({
             setHoveredIdx(null);
             resetSiblings();
           }}
+          role={onCardClick ? "button" : undefined}
+          tabIndex={onCardClick ? 0 : undefined}
+          onClick={onCardClick ? () => onCardClick(idx) : undefined}
+          onKeyDown={
+            onCardClick
+              ? (e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    onCardClick(idx);
+                  }
+                }
+              : undefined
+          }
         >
           <StarBorder
             as="div"
