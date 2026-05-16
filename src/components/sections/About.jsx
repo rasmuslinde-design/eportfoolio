@@ -1,6 +1,7 @@
 import "./About.css";
 import { useMemo, useState } from "react";
 import ScrollStack, { ScrollStackItem } from "../ScrollStack";
+import ElectricBorder from "../ElectricBorder";
 
 const About = () => {
   const [hoveredEvolution, setHoveredEvolution] = useState(null);
@@ -22,7 +23,27 @@ const About = () => {
   return (
     <section id="about" className="about">
       <div className="section-container">
-        <h2 className="section-title">About Me</h2>
+        <div className="about-heroRow">
+          <h2 className="section-title about-heroTitle">About Me</h2>
+
+          <div className="about-heroMedia" aria-hidden="true">
+            <ElectricBorder
+              color="#ffffff"
+              speed={0.4}
+              chaos={0.07}
+              thickness={2}
+              borderRadius={42}
+              style={{ borderRadius: 42 }}
+            >
+              <img
+                className="about-heroImage"
+                src="/assets/screenshots/eros.png"
+                alt=""
+                loading="lazy"
+              />
+            </ElectricBorder>
+          </div>
+        </div>
 
         <div className="about-scroll-stack">
           <ScrollStack

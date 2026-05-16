@@ -4,6 +4,46 @@
   position: relative;
 }
 
+.about-heroRow {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 520px);
+  gap: 2rem;
+  align-items: center;
+}
+
+.about-heroTitle {
+  justify-self: start;
+  text-align: left;
+  margin: 0;
+}
+
+.about-heroMedia {
+  justify-self: end;
+  width: 100%;
+  max-width: 520px;
+}
+
+.about-heroImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+  border-radius: 42px;
+}
+
+@media (max-width: 900px) {
+  .about-heroRow {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .about-heroMedia {
+    justify-self: start;
+    max-width: 640px;
+  }
+}
+
 :root {
   --about-accent: #2cdb29;
   --about-border: rgba(255, 255, 255, 0.2);
