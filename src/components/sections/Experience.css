@@ -13,40 +13,56 @@
 }
 
 .experience-card {
-  background: rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  border: 0;
   border-radius: 22px;
-  padding: 2rem;
+  padding: 0;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
   opacity: 0;
   animation: fadeInUp 0.8s ease-out forwards;
-  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.55);
+  box-shadow: none;
 }
 
-.experience-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+/* TiltedCard wrapper needs to fill the card. */
+.experience-card > .tilted-card-figure {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+}
+
+.experience-card > .tilted-card-figure .tilted-card-inner {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.experience-card > .tilted-card-figure .tilted-card-content {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.experience-inner {
+  height: 100%;
+  padding: 2rem 2.25rem 2rem 2rem;
+  background: transparent;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The TiltedCard itself is the single visual card surface. */
+.experience-card > .tilted-card-figure {
+  border-radius: 22px;
+  background: #000;
+  overflow: hidden;
+}
+
+.experience-card > .tilted-card-figure .tilted-card-content {
+  background: #000;
 }
 
 .experience-card:hover {
-  border-color: rgba(255, 255, 255, 1);
-  box-shadow:
-    0 18px 70px rgba(0, 0, 0, 0.55),
-    0 0 20px rgba(255, 255, 255, 0.3);
   transform: translateY(-5px);
-}
-
-.experience-card:hover::before {
-  opacity: 1;
 }
 
 .experience-header {
@@ -56,6 +72,7 @@
   gap: 1rem;
   margin-bottom: 1rem;
   flex-wrap: wrap;
+  padding-right: 1.4rem;
 }
 
 .experience-company {
@@ -68,10 +85,7 @@
 }
 
 .experience-period {
-  padding: 0.4rem 1rem;
-  background: rgba(44, 219, 41, 0.1);
   color: #2cdb29;
-  border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -79,6 +93,8 @@
   white-space: nowrap;
   position: relative;
   z-index: 1;
+  margin-top: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 .experience-role {
@@ -91,12 +107,14 @@
 }
 
 .experience-description {
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.8;
   color: #8f8990;
   margin-bottom: 1.5rem;
   position: relative;
   z-index: 1;
+  max-width: 52ch;
+  overflow-wrap: anywhere;
 }
 
 .experience-skills {
@@ -111,11 +129,51 @@
   padding: 0.5rem 1rem;
   background: rgba(44, 219, 41, 0.1);
   border: 1px solid rgba(44, 219, 41, 0.3);
-  border-radius: 20px;
+  border-radius: 10px;
   color: #2cdb29;
   font-size: 0.85rem;
   font-weight: 500;
   transition: all 0.3s ease;
+}
+
+/* Crosshair-like accent per card (TargetCursor applies to .cursor-target) */
+.experience-card--cool {
+  --exp-accent: #67c8ff;
+}
+
+.experience-card--warm {
+  --exp-accent: #ff9f45;
+}
+
+.experience-card--wood {
+  --exp-accent: #d6c19a;
+}
+
+.experience-card--emerald {
+  --exp-accent: #2fe1a2;
+}
+
+.experience-card--cool .skill-tag,
+.experience-card--warm .skill-tag,
+.experience-card--wood .skill-tag,
+.experience-card--emerald .skill-tag {
+  background: color-mix(in oklab, var(--exp-accent) 18%, transparent);
+  border-color: color-mix(
+    in oklab,
+    var(--exp-accent) 55%,
+    rgba(255, 255, 255, 0.12)
+  );
+  color: var(--exp-accent);
+}
+
+.experience-card--cool .skill-tag:hover,
+.experience-card--warm .skill-tag:hover,
+.experience-card--wood .skill-tag:hover,
+.experience-card--emerald .skill-tag:hover {
+  background: color-mix(in oklab, var(--exp-accent) 26%, transparent);
+  border-color: var(--exp-accent);
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--exp-accent) 70%, transparent);
+  transform: translateY(-2px);
 }
 
 .skill-tag:hover {
@@ -147,6 +205,10 @@
   }
 
   .experience-card {
+    padding: 0;
+  }
+
+  .experience-inner {
     padding: 1.5rem;
   }
 

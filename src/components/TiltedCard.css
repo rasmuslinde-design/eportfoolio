@@ -31,6 +31,12 @@
   transform-style: preserve-3d;
 }
 
+.tilted-card-content {
+  position: relative;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
 .tilted-card-img {
   position: absolute;
   top: 0;
