@@ -5,28 +5,46 @@ const Experience = () => {
     {
       company: "A. Le Coq",
       role: "Internship (Mechatronics)",
-      period: "2017-2018",
+      period: "2017–2018",
       description:
-        "Maintained and troubleshot complex industrial automation systems. Ensured high operational efficiency through systematic technical diagnostics.",
+        "Executed a specialized project involving the installation and precision configuration of industrial cooling systems. Applied technical blueprints to ensure seamless integration with existing production infrastructure.",
       skills: [
-        "Industrial Automation",
-        "Technical Diagnostics",
-        "System Maintenance",
+        "System Installation",
+        "Industrial Cooling",
+        "Technical Integration",
       ],
-      icon: "🏭",
     },
     {
       company: "Palmako",
       role: "Internship (Mechatronics)",
-      period: "2016-2017",
+      period: "2016–2017",
       description:
-        "Assisted in equipment setup and performance optimization. Applied technical logic to ensure the stability of production hardware and software interfaces.",
+        "Served as a Duty Mechanic, providing rapid-response troubleshooting and repairs for production line failures. Contributed to large-scale annual preventive maintenance shutdowns to ensure year-round hardware reliability.",
       skills: [
-        "Equipment Setup",
-        "Performance Optimization",
-        "Hardware/Software Integration",
+        "Rapid Response",
+        "Preventive Maintenance",
+        "Hardware Reliability",
       ],
-      icon: "🔧",
+    },
+    {
+      company: "Puidueksperdid",
+      role: "Puidueksperdid",
+      period: "2021, 2024",
+      description:
+        "Managed warehouse logistics including receiving incoming shipments, strategic stock placement, and fulfilling customer orders. Ensured inventory accuracy and streamlined the dispatch process in a high-volume environment.",
+      skills: [
+        "Inventory Management",
+        "Warehouse Logistics",
+        "Order Fulfillment",
+      ],
+    },
+    {
+      company: "Independent Trader",
+      role: "Independent Trader (Proprietary Trading)",
+      period: "2022–2023",
+      description:
+        "Engaged in active day trading using personal capital and passed rigorous evaluations to secure funded accounts from proprietary trading firms. Developed disciplined risk management strategies and analyzed market volatility to hit daily performance targets.",
+      skills: ["Risk Management", "Market Analysis", "Proprietary Trading"],
     },
   ];
 
@@ -42,7 +60,6 @@ const Experience = () => {
               className="experience-card"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
-              <div className="experience-icon">{exp.icon}</div>
               <div className="experience-header">
                 <h3 className="experience-company">{exp.company}</h3>
                 <span className="experience-period">{exp.period}</span>
