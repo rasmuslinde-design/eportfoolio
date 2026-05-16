@@ -151,6 +151,7 @@ const BounceGallery = () => {
 
   return (
     <section
+      id="projects"
       ref={sectionRef}
       className="bounce-gallery"
       aria-label="Bounce cards gallery"

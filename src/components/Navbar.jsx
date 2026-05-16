@@ -3,7 +3,6 @@ import Dock from "./Dock";
 import {
   VscHome,
   VscAccount,
-  VscCode,
   VscBook,
   VscBriefcase,
   VscRocket,
@@ -30,9 +29,9 @@ const Navbar = () => {
       onClick: () => scrollToSection("about"),
     },
     {
-      icon: <VscCode size={24} />,
-      label: "Skills",
-      onClick: () => scrollToSection("skills"),
+      icon: <VscRocket size={24} />,
+      label: "Projects",
+      onClick: () => scrollToSection("projects"),
     },
     {
       icon: <VscBook size={24} />,
@@ -43,11 +42,6 @@ const Navbar = () => {
       icon: <VscBriefcase size={24} />,
       label: "Experience",
       onClick: () => scrollToSection("experience"),
-    },
-    {
-      icon: <VscRocket size={24} />,
-      label: "Projects",
-      onClick: () => scrollToSection("projects"),
     },
   ];
 
