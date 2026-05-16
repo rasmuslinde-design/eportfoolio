@@ -8,7 +8,8 @@ const Education = () => {
       degree: "Software Development",
       description:
         "Focusing on modern programming principles, database management, and software architecture with hands-on practical projects.",
-      icon: "💻",
+      logoSrc: "/assets/screenshots/voco.png",
+      logoAlt: "VOCO logo",
     },
     {
       period: "2016 – 2018",
@@ -16,7 +17,9 @@ const Education = () => {
       degree: "Mechatronics Technician",
       description:
         "Studied the integration of mechanics, electronics, and programming. Discovered passion for software development.",
-      icon: "⚙️",
+      logoSrc: "/assets/screenshots/khk.png",
+      logoAlt: "KHK logo",
+      logoClassName: "timeline-logo--cover",
     },
     {
       period: "2013 – 2016",
@@ -24,7 +27,8 @@ const Education = () => {
       degree: "General Secondary Education",
       description:
         "Completed comprehensive secondary education with focus on sciences and mathematics.",
-      icon: "🎓",
+      logoSrc: "/assets/screenshots/kjpg.png",
+      logoAlt: "KJPG school logo",
     },
   ];
 
@@ -40,7 +44,14 @@ const Education = () => {
               className="timeline-item"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
-              <div className="timeline-icon">{item.icon}</div>
+              <div className="timeline-icon" aria-hidden="true">
+                <img
+                  className={`timeline-logo ${item.logoClassName ?? ""}`}
+                  src={item.logoSrc}
+                  alt={item.logoAlt}
+                  loading="lazy"
+                />
+              </div>
               <div className="timeline-content">
                 <span className="timeline-period">{item.period}</span>
                 <h3 className="timeline-institution">{item.institution}</h3>
