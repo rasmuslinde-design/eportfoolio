@@ -1,16 +1,39 @@
 import "./BounceGallery.css";
 import BounceCards from "../BounceCards";
 import LogoLoop from "../LogoLoop";
-import { useEffect, useMemo, useState } from "react";
+import AnimatedContent from "../AnimatedContent";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const BounceGallery = () => {
   const [activeIdx, setActiveIdx] = useState(null);
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     // Allows global UI (Dock/etc) to react to modal state via CSS.
     document.body.toggleAttribute("data-bounce-modal-open", activeIdx !== null);
     return () => document.body.removeAttribute("data-bounce-modal-open");
   }, [activeIdx]);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setIsInView(!!entry?.isIntersecting);
+      },
+      {
+        root: null,
+        // Consider it "in view" when roughly the title/cards area is visible.
+        threshold: 0.2,
+      },
+    );
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   const projects = useMemo(
     () => [
@@ -77,6 +100,16 @@ const BounceGallery = () => {
         githubUrl: "https://github.com/rasmuslinde-design/TinyDunegeon",
         liveUrl: "https://tinydunegeon.onrender.com/",
       },
+      {
+        title: "Robitrans: Logistics Management System",
+        screenshotSrc: "/assets/screenshots/RobiTrans.png",
+        gifSrc: "/assets/gif/RobiTrans.gif",
+        technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+        description:
+          "A modern corporate landing page developed for a logistics company. This project focuses on high-end visual storytelling, utilizing ReactBits components to create engaging animations and a premium user experience. Built with React and TypeScript, it demonstrates my ability to integrate and customize complex UI libraries to meet specific business branding needs.",
+        githubUrl: "https://github.com/rasmuslinde-design/robitrans",
+        liveUrl: "https://robitrans.onrender.com/",
+      },
     ],
     [],
   );
@@ -100,6 +133,7 @@ const BounceGallery = () => {
   );
 
   const transformStyles = [
+    "rotate(7deg) translate(-315px)",
     "rotate(5deg) translate(-210px)",
     "rotate(0deg) translate(-105px)",
     "rotate(-5deg)",
@@ -116,10 +150,37 @@ const BounceGallery = () => {
   const closeModal = () => setActiveIdx(null);
 
   return (
-    <section className="bounce-gallery" aria-label="Bounce cards gallery">
+    <section
+      ref={sectionRef}
+      className="bounce-gallery"
+      aria-label="Bounce cards gallery"
+    >
       <div className="section-container">
         <h2 className="section-title">Projects</h2>
-        <div className="bounce-gallery__wrap">
+
+        {isInView && (
+          <div className="bounce-gallery__hint" aria-hidden="true">
+            <AnimatedContent
+              distance={100}
+              direction="horizontal"
+              reverse
+              duration={0.8}
+              ease="bounce.out"
+              initialOpacity={0}
+              animateOpacity
+              scale={1}
+              threshold={0.15}
+              delay={0}
+              className="bounce-gallery__hintAnim"
+            >
+              <div className="bounce-gallery__hintCard">
+                <em>Hover to preview, click to expand details.</em>
+              </div>
+            </AnimatedContent>
+          </div>
+        )}
+
+        <div className="bounce-gallery__wrap bounce-gallery__wrap--spaced">
           <BounceCards
             className="custom-bounceCards"
             images={images}
@@ -135,6 +196,10 @@ const BounceGallery = () => {
             onCardClick={(idx) => setActiveIdx(idx)}
           />
         </div>
+
+        <p className="bounce-gallery__between" aria-hidden="true">
+          <em>Explore the timeline from early roots to latest works</em>
+        </p>
 
         <div className="bounce-gallery__logos" aria-label="Technology stack">
           <div className="bounce-gallery__logosInner">
@@ -187,7 +252,7 @@ const BounceGallery = () => {
                     <img
                       src={activeProject.gifSrc}
                       alt={`${activeProject.title} preview`}
-                      loading="eager"
+                      loading="lazy"
                       decoding="async"
                     />
                   </div>
