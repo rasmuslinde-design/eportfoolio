@@ -1,6 +1,6 @@
 .education {
-  min-height: 100vh;
-  padding: 6rem 2rem;
+  min-height: auto;
+  padding: clamp(44px, 6vh, 88px) 2rem;
   position: relative;
 }
 
@@ -14,7 +14,7 @@
 .timeline-item {
   display: flex;
   gap: 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: clamp(24px, 4vh, 56px);
   position: relative;
   opacity: 0;
   animation: fadeInUp 0.8s ease-out forwards;

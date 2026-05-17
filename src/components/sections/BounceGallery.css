@@ -1,5 +1,5 @@
 .bounce-gallery {
-  padding: 2.5rem 2rem 1.5rem;
+  padding: clamp(28px, 4vh, 44px) 2rem clamp(16px, 3vh, 28px);
   position: relative;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .bounce-gallery__wrap--spaced {
-  margin-top: 1.75rem;
+  margin-top: clamp(14px, 2.5vh, 22px);
 }
 
 .bounce-gallery__hint {

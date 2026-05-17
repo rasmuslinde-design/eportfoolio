@@ -27,3 +27,11 @@ textarea,
 select {
   font-family: inherit;
 }
+
+/* Global content container used by sections */
+.section-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 3vw, 32px);
+  overflow-x: clip;
+}

@@ -1,13 +1,13 @@
 .experience {
-  min-height: 100vh;
-  padding: 6rem 2rem;
+  min-height: auto;
+  padding: clamp(44px, 6vh, 88px) 2rem;
   position: relative;
 }
 
 .experience-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2rem;
+  gap: clamp(16px, 2.5vh, 32px);
   max-width: 1200px;
   margin: 0 auto;
 }
