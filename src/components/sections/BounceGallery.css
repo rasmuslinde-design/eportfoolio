@@ -29,6 +29,25 @@
   pointer-events: none;
 }
 
+/* Mobile: avoid overlaps. Make the hint take normal space and add more top spacing for the section. */
+@media (max-width: 768px) {
+  .bounce-gallery {
+    padding-top: 6.5rem;
+    margin-top: 1.75rem;
+  }
+
+  .bounce-gallery__hint {
+    height: auto;
+    margin: 0 0 0.75rem;
+  }
+
+  .bounce-gallery__hintAnim {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+}
+
 .bounce-gallery__hintCard {
   pointer-events: none;
   display: inline-flex;
@@ -82,11 +101,13 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  overflow-x: clip;
 }
 
 .bounce-gallery__modalWrap {
   position: relative;
   width: min(980px, 100%);
+  max-width: 100%;
 }
 
 .bounce-gallery__modal {

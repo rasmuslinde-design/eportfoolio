@@ -139,14 +139,22 @@ export default function BounceCards({
           style={{
             transform: transformStyles[idx] ?? "none",
           }}
-          onMouseEnter={() => {
-            setHoveredIdx(idx);
-            pushSiblings(idx);
-          }}
-          onMouseLeave={() => {
-            setHoveredIdx(null);
-            resetSiblings();
-          }}
+          onMouseEnter={
+            enableHover
+              ? () => {
+                  setHoveredIdx(idx);
+                  pushSiblings(idx);
+                }
+              : undefined
+          }
+          onMouseLeave={
+            enableHover
+              ? () => {
+                  setHoveredIdx(null);
+                  resetSiblings();
+                }
+              : undefined
+          }
           role={onCardClick ? "button" : undefined}
           tabIndex={onCardClick ? 0 : undefined}
           onClick={onCardClick ? () => onCardClick(idx) : undefined}

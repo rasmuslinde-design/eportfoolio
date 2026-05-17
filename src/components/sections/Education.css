@@ -107,6 +107,13 @@
   border-bottom: none;
 }
 
+/* Mobile: prevent the rotated "arrow" squares from pushing layout sideways */
+@media (max-width: 768px) {
+  .timeline-content::before {
+    display: none;
+  }
+}
+
 .timeline-period {
   display: inline-block;
   padding: 0.5rem 1rem;

@@ -39,6 +39,34 @@
   position: relative;
 }
 
+/* Mobile: turn ScrollStack into a normal vertical list (no window-scroll stacking)
+   so it can't overlap the next section heading. Desktop behavior stays unchanged. */
+@media (max-width: 768px) {
+  .scroll-stack-scroller {
+    height: auto;
+    overflow: visible;
+    overscroll-behavior: auto;
+  }
+
+  .scroll-stack-inner {
+    padding: 1.25rem 1rem 2.5rem;
+    min-height: 0;
+  }
+
+  .scroll-stack-card-wrapper {
+    position: static;
+  }
+
+  .scroll-stack-card {
+    height: auto;
+    margin: 14px 0;
+    padding: 0;
+    transform: none !important;
+    filter: none !important;
+    box-shadow: none;
+  }
+}
+
 .scroll-stack-end {
   width: 100%;
   height: 1px;

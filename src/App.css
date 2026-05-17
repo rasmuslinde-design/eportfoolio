@@ -7,12 +7,17 @@ html,
 body {
   background: #0e0f12;
   color: #fff;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Make sure the app content always paints above the fixed background layer */
 #root {
   position: relative;
   z-index: 1;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Utility classes */
@@ -30,6 +35,8 @@ body[data-bounce-modal-open] .app-bottom-bar {
 /* Prevent background scroll while the modal dialog is open */
 body[data-bounce-modal-open] {
   overflow: hidden;
+  overflow-x: hidden;
+  overscroll-behavior: none;
 }
 
 /* Smooth scroll */
@@ -55,5 +62,13 @@ body[data-bounce-modal-open] {
   body {
     background: #000;
     color: #fff;
+  }
+}
+
+/* TEMP (mobile debug): visually reveal elements that might cause side-scroll.
+   Remove once overflow culprit is confirmed. */
+@media (max-width: 768px) {
+  body[data-debug-overflow="true"] * {
+    outline: 1px solid rgba(255, 0, 0, 0.2);
   }
 }

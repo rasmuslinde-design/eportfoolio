@@ -63,7 +63,14 @@ function DockItem({
       role="button"
       aria-haspopup="true"
     >
-      {Children.map(children, (child) => cloneElement(child, { isHovered }))}
+      {Children.map(children, (child) => {
+        // Prevent leaking MotionValues onto DOM nodes (React warning).
+        // Only DockLabel consumes `isHovered`.
+        if (child?.type === DockLabel) {
+          return cloneElement(child, { isHovered });
+        }
+        return child;
+      })}
     </motion.div>
   );
 }

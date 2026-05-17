@@ -5,6 +5,12 @@
   justify-content: center;
   padding: 2.5rem 2rem 1.25rem;
   position: relative;
+  overflow-x: clip;
+}
+
+.hero,
+.hero * {
+  box-sizing: border-box;
 }
 
 .hero-content {
@@ -12,6 +18,7 @@
   max-width: 1400px;
   text-align: center;
   animation: fadeInUp 1s ease-out;
+  max-width: 100%;
 }
 
 .hero-window {
@@ -27,6 +34,7 @@
   align-items: center;
   justify-content: center;
   gap: 1.25rem;
+  max-width: 100%;
 }
 
 .hero-logo {
@@ -36,6 +44,7 @@
 .hero-logo-img {
   width: 120px;
   height: 120px;
+  max-width: 100%;
   filter: none;
   animation: float 8s ease-in-out infinite;
 }
@@ -86,5 +95,17 @@
   .hero-logo-img {
     width: 80px;
     height: 80px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .hero-window {
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
   }
 }

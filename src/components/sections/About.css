@@ -44,6 +44,23 @@
   }
 }
 
+/* Mobile: keep section titles in normal flow to avoid overlap/overflow */
+@media (max-width: 768px) {
+  .section-title {
+    left: auto;
+    transform: none;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Give Projects room after the ScrollStack so headings don't sit on top of the last card */
+  .about {
+    padding-bottom: 7rem;
+  }
+}
+
 :root {
   --about-accent: #2cdb29;
   --about-border: rgba(255, 255, 255, 0.2);
@@ -395,6 +412,7 @@
 .section-container {
   max-width: 1400px;
   margin: 0 auto;
+  overflow-x: clip;
 }
 
 .section-title {
@@ -407,6 +425,19 @@
   display: inline-block;
   left: 50%;
   transform: translateX(-50%);
+}
+
+/* Mobile override (duplicated here intentionally to beat the later .section-title rule) */
+@media (max-width: 768px) {
+  .section-title {
+    left: auto;
+    transform: none;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .section-title::after {

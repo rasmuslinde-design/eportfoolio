@@ -193,7 +193,7 @@ const BounceGallery = () => {
             animationStagger={0.08}
             easeType="elastic.out(1, 0.5)"
             transformStyles={transformStyles}
-            enableHover
+            enableHover={true}
             onCardClick={(idx) => setActiveIdx(idx)}
           />
         </div>

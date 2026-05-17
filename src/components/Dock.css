@@ -6,6 +6,27 @@
   pointer-events: auto;
 }
 
+@media (max-width: 768px) {
+  .dock-outer {
+    margin: 0;
+    max-width: 100vw;
+  }
+
+  .dock-panel {
+    max-width: calc(100vw - 2rem);
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+
+  .dock-label {
+    max-width: calc(100vw - 2rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 .dock-panel {
   display: flex;
   align-items: center;
