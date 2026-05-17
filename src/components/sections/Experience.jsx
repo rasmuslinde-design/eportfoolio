@@ -45,7 +45,7 @@ const Experience = () => {
     {
       company: "Independent Trader",
       role: "Independent Trader (Proprietary Trading)",
-      period: "2022–2023",
+      period: "2024–2025",
       accent: "emerald",
       description:
         "Engaged in active day trading using personal capital and passed rigorous evaluations to secure funded accounts from proprietary trading firms. Developed disciplined risk management strategies and analyzed market volatility to hit daily performance targets.",
