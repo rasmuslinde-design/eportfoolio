@@ -1,6 +1,6 @@
 .about {
   min-height: 100vh;
-  padding: 0.6rem 2rem 6rem;
+  padding: 0.6rem 2rem 4.25rem;
   position: relative;
 }
 
@@ -88,7 +88,7 @@
 
 /* Controls hero -> about gap (kept from earlier tuning) */
 .about .scroll-stack-inner {
-  padding: 4.5vh 2rem 7rem;
+  padding: 3.5vh 2rem 3.75rem;
 }
 
 .about-stack-card {
