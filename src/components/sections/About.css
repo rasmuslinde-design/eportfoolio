@@ -9,6 +9,7 @@
   grid-template-columns: 1fr minmax(280px, 520px);
   gap: 2rem;
   align-items: center;
+  margin-top: 0.5rem;
 }
 
 .about-heroTitle {

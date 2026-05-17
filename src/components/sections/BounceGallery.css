@@ -32,8 +32,8 @@
 /* Mobile: avoid overlaps. Make the hint take normal space and add more top spacing for the section. */
 @media (max-width: 768px) {
   .bounce-gallery {
-    padding-top: 6.5rem;
-    margin-top: 1.75rem;
+  padding-top: 3.25rem;
+  margin-top: 0.75rem;
   }
 
   .bounce-gallery__hint {
