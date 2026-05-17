@@ -39,9 +39,8 @@
 .eb-glow-2,
 .eb-background-glow {
   position: absolute;
-  /* Negative inset prevents the blur from being visually "cut" into a straight line */
-  inset: -24px;
-  border-radius: calc(inherit + 24px);
+  inset: 0;
+  border-radius: inherit;
   pointer-events: none;
   box-sizing: border-box;
 }

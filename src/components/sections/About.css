@@ -1,25 +1,25 @@
 .about {
   min-height: 100vh;
-  padding: 0.6rem 2rem 4.25rem;
+  padding: 0.6rem 2rem 6rem;
   position: relative;
 }
 
 .about-heroRow {
   display: grid;
-  grid-template-columns: 1fr minmax(280px, 520px);
+  grid-template-columns: minmax(320px, 560px) minmax(280px, 520px);
   gap: 2rem;
   align-items: center;
-  margin-top: 0.5rem;
 }
 
 .about-heroTitle {
   justify-self: start;
   text-align: left;
   margin: 0;
+  padding-left: 0.75rem;
 }
 
 .about-heroMedia {
-  justify-self: end;
+  justify-self: start;
   width: 100%;
   max-width: 520px;
 }
@@ -42,6 +42,10 @@
   .about-heroMedia {
     justify-self: start;
     max-width: 640px;
+  }
+
+  .about-heroTitle {
+    padding-left: 0;
   }
 }
 
