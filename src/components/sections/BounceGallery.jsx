@@ -255,6 +255,13 @@ const BounceGallery = () => {
                       alt={`${activeProject.title} preview`}
                       loading="lazy"
                       decoding="async"
+                      width={980}
+                      height={405}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain",
+                      }}
                     />
                   </div>
                 </div>

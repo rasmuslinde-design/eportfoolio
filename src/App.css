@@ -27,6 +27,69 @@ body {
   padding: 0 2rem;
 }
 
+/* Top navbar wrapper */
+.app-top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+.app-top-bar__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  pointer-events: auto;
+}
+
+/* Bottom-left ContactMe widget (restores original feel) */
+.app-contact-widget {
+  position: fixed;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 99999;
+  pointer-events: auto;
+}
+
+/* When About modal is open, push fixed UI behind modal overlay */
+body[data-about-modal-open] .app-top-bar,
+body[data-about-modal-open] .app-contact-widget,
+body[data-about-modal-open] .rb-navbar,
+body[data-about-modal-open] .pill-nav-container,
+body[data-about-modal-open] .rb-navbar__logo {
+  z-index: 0 !important;
+  pointer-events: none !important;
+  opacity: 0.001;
+}
+
+/* General safety: if ANY modal-like UI is open, keep fixed nav/widgets behind it.
+   This prevents the mobile burger menu hit-area from blocking close buttons. */
+body[data-bounce-modal-open] .app-top-bar,
+body[data-bounce-modal-open] .app-contact-widget,
+body[data-bounce-modal-open] .rb-navbar,
+body[data-bounce-modal-open] .pill-nav-container,
+body[data-bounce-modal-open] .rb-navbar__logo {
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+@media (max-width: 768px) {
+  .app-top-bar__inner {
+    padding: 0.85rem 1rem;
+  }
+
+  .app-contact-widget {
+    left: 1rem;
+    bottom: 1rem;
+  }
+}
+
 /* When the Projects modal is open, keep the bottom Dock/Contact widget from overlapping the dialog. */
 body[data-bounce-modal-open] .app-bottom-bar {
   display: none;

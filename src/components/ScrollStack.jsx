@@ -294,6 +294,7 @@ const ScrollStack = ({
     blurAmount,
     useWindowScroll,
     onStackComplete,
+    handleScroll,
     setupLenis,
     updateCardTransforms,
   ]);

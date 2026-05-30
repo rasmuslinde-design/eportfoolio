@@ -4,24 +4,75 @@
   position: relative;
 }
 
+.about-header {
+  max-width: 1200px;
+  margin: 0 auto clamp(16px, 2.2vh, 26px);
+}
+
 .about-heroRow {
   display: grid;
-  grid-template-columns: minmax(320px, 560px) minmax(280px, 520px);
+  grid-template-columns: minmax(280px, 520px) minmax(320px, 560px);
   gap: 2rem;
-  align-items: center;
+  align-items: start;
 }
 
 .about-heroTitle {
-  justify-self: start;
   text-align: left;
   margin: 0;
-  padding-left: 0.75rem;
+  padding-left: 0;
+}
+
+.about-heroSub {
+  margin: 0.75rem 0 0;
+  font-family: var(--font-body);
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+}
+
+.about-heroCaption {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.68);
+  text-align: left;
+}
+
+.about-right {
+  width: 100%;
+  display: flex;
+}
+
+.about-right .about-static-cards {
+  width: 100%;
 }
 
 .about-heroMedia {
   justify-self: start;
   width: 100%;
   max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.about-heroImageFrame {
+  display: inline-block;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+
+.about-heroImageFrame:hover {
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow:
+    0 18px 70px rgba(0, 0, 0, 0.55),
+    0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .about-heroImage {
@@ -29,11 +80,21 @@
   width: 100%;
   height: auto;
   object-fit: contain;
+  object-position: center;
   background: transparent;
-  border-radius: 42px;
+  border-radius: 0;
+}
+
+.about-heroCaption {
+  flex: 0 0 auto;
 }
 
 @media (max-width: 900px) {
+  .about-header {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
   .about-heroRow {
     grid-template-columns: 1fr;
     gap: 1.25rem;
@@ -44,8 +105,12 @@
     max-width: 640px;
   }
 
+  .about-heroCaption {
+    text-align: center;
+  }
+
   .about-heroTitle {
-    padding-left: 0;
+    text-align: center;
   }
 }
 
@@ -79,6 +144,31 @@
   padding-bottom: 30px;
 }
 
+/* Static About cards (no ScrollStack effect) */
+.about-static-cards {
+  display: grid;
+  gap: clamp(16px, 2.5vh, 28px);
+  max-width: 760px;
+  margin: 0;
+}
+
+/* Keep the same visual card, but make it narrower vs full-width */
+.about-stack-card {
+  max-width: 760px;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .about-static-cards,
+  .about-stack-card {
+    max-width: 100%;
+  }
+
+  .about-stack-card {
+    min-height: 0;
+  }
+}
+
 .about-scroll-stack__scroller {
   height: auto;
   overflow: visible;
@@ -98,7 +188,7 @@
 
 .about-stack-card {
   height: auto;
-  min-height: 320px;
+  min-height: 360px;
   background: transparent;
   border: 0;
   padding: 0;
@@ -143,19 +233,138 @@
 }
 
 .about-card-body {
-  padding: 1.6rem 1.9rem 1.9rem;
+  padding: 1.6rem 1.9rem 5.1rem;
+  position: relative;
+}
+
+.about-readMore {
+  position: absolute;
+  right: 1.6rem;
+  bottom: 1.55rem;
+  height: 38px;
+  padding: 0 0.95rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.92);
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 120ms ease,
+    background 120ms ease,
+    border-color 120ms ease;
+}
+
+.about-readMore:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.about-readMore:focus-visible {
+  outline: 2px solid rgba(44, 219, 41, 0.85);
+  outline-offset: 2px;
+}
+
+/* Modal (mirrors BounceGallery look/behavior) */
+.about-modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow-x: clip;
+}
+
+.about-modalWrap {
+  position: relative;
+  width: min(920px, 100%);
+  max-width: 100%;
+}
+
+.about-modal {
+  width: 100%;
+  max-height: calc(100dvh - 4rem);
+  border-radius: 18px;
+  border: 1px solid rgba(44, 219, 41, 0.18);
+  background: #000;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  position: relative;
+  overflow: auto;
+  padding: 1.75rem 1.75rem 1.9rem;
+}
+
+.about-modalClose {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(0, 0, 0, 0.55);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.about-modalClose:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.about-modalTitle {
+  margin: 0 0 0.85rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 800;
+  font-size: 1.35rem;
+  font-family: var(--font-heading);
+}
+
+.about-modalBody {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: var(--font-body);
+  line-height: 1.75;
+  white-space: pre-line;
+}
+
+.about-modalSection + .about-modalSection {
+  margin-top: 1.25rem;
+}
+
+.about-modalHeading {
+  margin: 0 0 0.55rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 800;
+  font-size: 1.15rem;
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+}
+
+.about-modalParagraph {
+  margin: 0.65rem 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: var(--font-body);
+  line-height: 1.75;
+}
+
+.about-modalSection .about-modalParagraph:first-of-type {
+  margin-top: 0;
 }
 
 .about-split {
   display: grid;
-  grid-template-columns: 3fr 2fr; /* default (~60/40) */
+  grid-template-columns: 1fr;
   gap: 1.5rem;
   align-items: stretch;
-}
-
-/* Card 1 needs a slightly wider timeline column for breathing room */
-.about [aria-label="The Evolution"] .about-split {
-  grid-template-columns: 55% 45%;
 }
 
 .about-split__left {
@@ -406,7 +615,12 @@
   }
 
   .about-card-body {
-    padding: 1.2rem;
+    padding: 1.2rem 1.2rem 4.25rem;
+  }
+
+  .about-readMore {
+    right: 1.2rem;
+    bottom: 1.2rem;
   }
 
   .about-split {

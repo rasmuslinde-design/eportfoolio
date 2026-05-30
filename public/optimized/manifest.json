@@ -1,0 +1,496 @@
+{
+  "generatedAt": "2026-05-30T10:37:09.085Z",
+  "outDir": "public/optimized",
+  "entries": {
+    "public/assets/tailwind1.png": {
+      "bytes": 18398,
+      "width": 360,
+      "height": 360,
+      "variants": [
+        {
+          "width": 360,
+          "webp": "/optimized/tailwind1.webp",
+          "avif": "/optimized/tailwind1.avif",
+          "avifBytes": 1837,
+          "webpBytes": 3052
+        }
+      ]
+    },
+    "public/assets/sass1.jpg": {
+      "bytes": 19015,
+      "width": 360,
+      "height": 360,
+      "variants": [
+        {
+          "width": 360,
+          "webp": "/optimized/sass1.webp",
+          "avif": "/optimized/sass1.avif",
+          "avifBytes": 4239,
+          "webpBytes": 6586
+        }
+      ]
+    },
+    "public/assets/react1.jpg": {
+      "bytes": 29266,
+      "width": 360,
+      "height": 360,
+      "variants": [
+        {
+          "width": 360,
+          "webp": "/optimized/react1.webp",
+          "avif": "/optimized/react1.avif",
+          "avifBytes": 9466,
+          "webpBytes": 12600
+        }
+      ]
+    },
+    "public/assets/logo-light-background.jpg": {
+      "bytes": 20382,
+      "width": 1181,
+      "height": 1181,
+      "variants": [
+        {
+          "width": 480,
+          "webp": "/optimized/logo-light-background-480w.webp",
+          "avif": "/optimized/logo-light-background-480w.avif",
+          "avifBytes": 1549,
+          "webpBytes": 2220
+        },
+        {
+          "width": 768,
+          "webp": "/optimized/logo-light-background-768w.webp",
+          "avif": "/optimized/logo-light-background-768w.avif",
+          "avifBytes": 2038,
+          "webpBytes": 3714
+        },
+        {
+          "width": 1024,
+          "webp": "/optimized/logo-light-background-1024w.webp",
+          "avif": "/optimized/logo-light-background-1024w.avif",
+          "avifBytes": 2549,
+          "webpBytes": 5280
+        },
+        {
+          "width": 1280,
+          "webp": "/optimized/logo-light-background-1280w.webp",
+          "avif": "/optimized/logo-light-background-1280w.avif",
+          "avifBytes": 2828,
+          "webpBytes": 6496
+        }
+      ]
+    },
+    "public/assets/logo-black-background.png": {
+      "bytes": 486532,
+      "width": 1017,
+      "height": 827,
+      "variants": [
+        {
+          "width": 480,
+          "webp": "/optimized/logo-black-background-480w.webp",
+          "avif": "/optimized/logo-black-background-480w.avif",
+          "avifBytes": 1776,
+          "webpBytes": 2138
+        },
+        {
+          "width": 768,
+          "webp": "/optimized/logo-black-background-768w.webp",
+          "avif": "/optimized/logo-black-background-768w.avif",
+          "avifBytes": 2372,
+          "webpBytes": 3588
+        },
+        {
+          "width": 1024,
+          "webp": "/optimized/logo-black-background-1024w.webp",
+          "avif": "/optimized/logo-black-background-1024w.avif",
+          "avifBytes": 2861,
+          "webpBytes": 5056
+        },
+        {
+          "width": 1280,
+          "webp": "/optimized/logo-black-background-1280w.webp",
+          "avif": "/optimized/logo-black-background-1280w.avif",
+          "avifBytes": 2861,
+          "webpBytes": 5056
+        }
+      ]
+    },
+    "public/assets/js1.png": {
+      "bytes": 11149,
+      "width": 360,
+      "height": 360,
+      "variants": [
+        {
+          "width": 360,
+          "webp": "/optimized/js1.webp",
+          "avif": "/optimized/js1.avif",
+          "avifBytes": 1890,
+          "webpBytes": 2850
+        }
+      ]
+    },
+    "public/assets/html1.jpg": {
+      "bytes": 12634,
+      "width": 360,
+      "height": 360,
+      "variants": [
+        {
+          "width": 360,
+          "webp": "/optimized/html1.webp",
+          "avif": "/optimized/html1.avif",
+          "avifBytes": 2288,
+          "webpBytes": 3248
+        }
+      ]
+    },
+    "public/assets/css1.jpg": {
+      "bytes": 17351,
+      "width": 360,
+      "height": 360,
+      "variants": [
+        {
+          "width": 360,
+          "webp": "/optimized/css1.webp",
+          "avif": "/optimized/css1.avif",
+          "avifBytes": 3162,
+          "webpBytes": 4158
+        }
+      ]
+    },
+    "public/assets/screenshots/yheleheline.png": {
+      "bytes": 393528,
+      "width": 1276,
+      "height": 714,
+      "variants": [
+        {
+          "width": 480,
+          "webp": "/optimized/screenshots/yheleheline-480w.webp",
+          "avif": "/optimized/screenshots/yheleheline-480w.avif",
+          "avifBytes": 12754,
+          "webpBytes": 14564
+        },
+        {
+          "width": 768,
+          "webp": "/optimized/screenshots/yheleheline-768w.webp",
+          "avif": "/optimized/screenshots/yheleheline-768w.avif",
+          "avifBytes": 22797,
+          "webpBytes": 27844
+        },
+        {
+          "width": 1024,
+          "webp": "/optimized/screenshots/yheleheline-1024w.webp",
+          "avif": "/optimized/screenshots/yheleheline-1024w.avif",
+          "avifBytes": 34746,
+          "webpBytes": 43090
+        },
+        {
+          "width": 1280,
+          "webp": "/optimized/screenshots/yheleheline-1280w.webp",
+          "avif": "/optimized/screenshots/yheleheline-1280w.avif",
+          "avifBytes": 56093,
+          "webpBytes": 61824
+        }
+      ]
+    },
+    "public/assets/screenshots/voco.png": {
+      "bytes": 3284,
+      "width": 225,
+      "height": 225,
+      "variants": [
+        {
+          "width": 225,
+          "webp": "/optimized/screenshots/voco.webp",
+          "avif": "/optimized/screenshots/voco.avif",
+          "avifBytes": 2392,
+          "webpBytes": 2768
+        }
+      ]
+    },
+    "public/assets/screenshots/tinydungeon.png": {
+      "bytes": 363692,
+      "width": 1278,
+      "height": 702,
+      "variants": [
+        {
+          "width": 480,
+          "webp": "/optimized/screenshots/tinydungeon-480w.webp",
+          "avif": "/optimized/screenshots/tinydungeon-480w.avif",
+          "avifBytes": 17032,
+          "webpBytes": 27212
+        },
+        {
+          "width": 768,
+          "webp": "/optimized/screenshots/tinydungeon-768w.webp",
+          "avif": "/optimized/screenshots/tinydungeon-768w.avif",
+          "avifBytes": 37284,
+          "webpBytes": 49188
+        },
+        {
+          "width": 1024,
+          "webp": "/optimized/screenshots/tinydungeon-1024w.webp",
+          "avif": "/optimized/screenshots/tinydungeon-1024w.avif",
+          "avifBytes": 58573,
+          "webpBytes": 73356
+        },
+        {
+          "width": 1280,
+          "webp": "/optimized/screenshots/tinydungeon-1280w.webp",
+          "avif": "/optimized/screenshots/tinydungeon-1280w.avif",
+          "avifBytes": 95812,
+          "webpBytes": 92612
+        }
+      ]
+    },
+    "public/assets/screenshots/sync.png": {
+      "bytes": 181109,
+      "width": 1278,
+      "height": 714,
+      "variants": [
+        {
+          "width": 480,
+          "webp": "/optimized/screenshots/sync-480w.webp",
+          "avif": "/optimized/screenshots/sync-480w.avif",
+          "avifBytes": 2957,
+          "webpBytes": 3296
+        },
+        {
+          "width": 768,
+          "webp": "/optimized/screenshots/sync-768w.webp",
+          "avif": "/optimized/screenshots/sync-768w.avif",
+          "avifBytes": 5394,
+          "webpBytes": 6782
+        },
+        {
+          "width": 1024,
+          "webp": "/optimized/screenshots/sync-1024w.webp",
+          "avif": "/optimized/screenshots/sync-1024w.avif",
+          "avifBytes": 10040,
+          "webpBytes": 13452
+        },
+        {
+          "width": 1280,
+          "webp": "/optimized/screenshots/sync-1280w.webp",
+          "avif": "/optimized/screenshots/sync-1280w.avif",
+          "avifBytes": 15765,
+          "webpBytes": 24458
+        }
+      ]
+    },
+    "public/assets/screenshots/mitmeleheline.png": {
+      "bytes": 200185,
+      "width": 1276,
+      "height": 672,
+      "variants": [
+        {
+          "width": 480,
+          "webp": "/optimized/screenshots/mitmeleheline-480w.webp",
+          "avif": "/optimized/screenshots/mitmeleheline-480w.avif",
+          "avifBytes": 5058,
+          "webpBytes": 5888
+        },
+        {
+          "width": 768,
+          "webp": "/optimized/screenshots/mitmeleheline-768w.webp",
+          "avif": "/optimized/screenshots/mitmeleheline-768w.avif",
+          "avifBytes": 8615,
+          "webpBytes": 11578
+        },
+        {
+          "width": 1024,
+          "webp": "/optimized/screenshots/mitmeleheline-1024w.webp",
+          "avif": "/optimized/screenshots/mitmeleheline-1024w.avif",
+          "avifBytes": 13769,
+          "webpBytes": 19924
+        },
+        {
+          "width": 1280,
+          "webp": "/optimized/screenshots/mitmeleheline-1280w.webp",
+          "avif": "/optimized/screenshots/mitmeleheline-1280w.avif",
+          "avifBytes": 23680,
+          "webpBytes": 28928
+        }
+      ]
+    },
+    "public/assets/screenshots/kjpg.png": {
+      "bytes": 4691,
+      "width": 225,
+      "height": 225,
+      "variants": [
+        {
+          "width": 225,
+          "webp": "/optimized/screenshots/kjpg.webp",
+          "avif": "/optimized/screenshots/kjpg.avif",
+          "avifBytes": 2720,
+          "webpBytes": 3390
+        }
+      ]
+    },
+    "public/assets/screenshots/khk.png": {
+      "bytes": 22161,
+      "width": 350,
+      "height": 227,
+      "variants": [
+        {
+          "width": 350,
+          "webp": "/optimized/screenshots/khk.webp",
+          "avif": "/optimized/screenshots/khk.avif",
+          "avifBytes": 4311,
+          "webpBytes": 4976
+        }
+      ]
+    },
+    "public/assets/screenshots/hobileht.png": {
+      "bytes": 390286,
+      "width": 1274,
+      "height": 716,
+      "variants": [
+        {
+          "width": 480,
+          "webp": "/optimized/screenshots/hobileht-480w.webp",
+          "avif": "/optimized/screenshots/hobileht-480w.avif",
+          "avifBytes": 10463,
+          "webpBytes": 12646
+        },
+        {
+          "width": 768,
+          "webp": "/optimized/screenshots/hobileht-768w.webp",
+          "avif": "/optimized/screenshots/hobileht-768w.avif",
+          "avifBytes": 18347,
+          "webpBytes": 24644
+        },
+        {
+          "width": 1024,
+          "webp": "/optimized/screenshots/hobileht-1024w.webp",
+          "avif": "/optimized/screenshots/hobileht-1024w.avif",
+          "avifBytes": 28498,
+          "webpBytes": 39504
+        },
+        {
+          "width": 1280,
+          "webp": "/optimized/screenshots/hobileht-1280w.webp",
+          "avif": "/optimized/screenshots/hobileht-1280w.avif",
+          "avifBytes": 61499,
+          "webpBytes": 58288
+        }
+      ]
+    },
+    "public/assets/screenshots/eros.webp": {
+      "bytes": 1125996,
+      "width": 2118,
+      "height": 2479,
+      "variants": [
+        {
+          "width": 480,
+          "webp": "/optimized/screenshots/eros-480w.webp",
+          "avif": "/optimized/screenshots/eros-480w.avif",
+          "avifBytes": 58283,
+          "webpBytes": 63974
+        },
+        {
+          "width": 768,
+          "webp": "/optimized/screenshots/eros-768w.webp",
+          "avif": "/optimized/screenshots/eros-768w.avif",
+          "avifBytes": 133849,
+          "webpBytes": 151134
+        },
+        {
+          "width": 1024,
+          "webp": "/optimized/screenshots/eros-1024w.webp",
+          "avif": "/optimized/screenshots/eros-1024w.avif",
+          "avifBytes": 209291,
+          "webpBytes": 246626
+        },
+        {
+          "width": 1280,
+          "webp": "/optimized/screenshots/eros-1280w.webp",
+          "avif": "/optimized/screenshots/eros-1280w.avif",
+          "avifBytes": 286027,
+          "webpBytes": 346982
+        }
+      ]
+    },
+    "public/assets/screenshots/epood.png": {
+      "bytes": 185471,
+      "width": 1280,
+      "height": 720,
+      "variants": [
+        {
+          "width": 480,
+          "webp": "/optimized/screenshots/epood-480w.webp",
+          "avif": "/optimized/screenshots/epood-480w.avif",
+          "avifBytes": 8200,
+          "webpBytes": 9560
+        },
+        {
+          "width": 768,
+          "webp": "/optimized/screenshots/epood-768w.webp",
+          "avif": "/optimized/screenshots/epood-768w.avif",
+          "avifBytes": 15487,
+          "webpBytes": 17950
+        },
+        {
+          "width": 1024,
+          "webp": "/optimized/screenshots/epood-1024w.webp",
+          "avif": "/optimized/screenshots/epood-1024w.avif",
+          "avifBytes": 24876,
+          "webpBytes": 26946
+        },
+        {
+          "width": 1280,
+          "webp": "/optimized/screenshots/epood-1280w.webp",
+          "avif": "/optimized/screenshots/epood-1280w.avif",
+          "avifBytes": 34037,
+          "webpBytes": 38452
+        }
+      ]
+    },
+    "public/assets/screenshots/RobiTrans.png": {
+      "bytes": 221174,
+      "width": 1274,
+      "height": 716,
+      "variants": [
+        {
+          "width": 480,
+          "webp": "/optimized/screenshots/RobiTrans-480w.webp",
+          "avif": "/optimized/screenshots/RobiTrans-480w.avif",
+          "avifBytes": 8098,
+          "webpBytes": 9198
+        },
+        {
+          "width": 768,
+          "webp": "/optimized/screenshots/RobiTrans-768w.webp",
+          "avif": "/optimized/screenshots/RobiTrans-768w.avif",
+          "avifBytes": 16740,
+          "webpBytes": 21286
+        },
+        {
+          "width": 1024,
+          "webp": "/optimized/screenshots/RobiTrans-1024w.webp",
+          "avif": "/optimized/screenshots/RobiTrans-1024w.avif",
+          "avifBytes": 28261,
+          "webpBytes": 37136
+        },
+        {
+          "width": 1280,
+          "webp": "/optimized/screenshots/RobiTrans-1280w.webp",
+          "avif": "/optimized/screenshots/RobiTrans-1280w.avif",
+          "avifBytes": 40922,
+          "webpBytes": 46768
+        }
+      ]
+    },
+    "src/assets/hero.png": {
+      "bytes": 44919,
+      "width": 343,
+      "height": 361,
+      "variants": [
+        {
+          "width": 343,
+          "webp": "/optimized/src/hero.webp",
+          "avif": "/optimized/src/hero.avif",
+          "avifBytes": 13166,
+          "webpBytes": 14114
+        }
+      ]
+    }
+  }
+}

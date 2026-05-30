@@ -1,42 +1,18 @@
 import "./App.css";
-import { useLayoutEffect, useRef, useState } from "react";
-import FloatingLines from "./components/FloatingLines";
+import { lazy, Suspense } from "react";
 import ClickSpark from "./components/ClickSpark";
 import TargetCursor from "./components/TargetCursor";
 import Navbar from "./components/Navbar";
 import ContactMe from "./components/ContactMe";
 import Hero from "./components/sections/Hero";
-import About from "./components/sections/About";
-import BounceGallery from "./components/sections/BounceGallery";
-import Education from "./components/sections/Education";
-import Experience from "./components/sections/Experience";
+
+const FloatingLines = lazy(() => import("./components/FloatingLines"));
+const About = lazy(() => import("./components/sections/About"));
+const BounceGallery = lazy(() => import("./components/sections/BounceGallery"));
+const Education = lazy(() => import("./components/sections/Education"));
+const Experience = lazy(() => import("./components/sections/Experience"));
 
 function App() {
-  const contactWrapRef = useRef(null);
-  const [rightSpacerWidth, setRightSpacerWidth] = useState(0);
-
-  useLayoutEffect(() => {
-    const el = contactWrapRef.current;
-    if (!el) return;
-
-    const measure = () => {
-      const rect = el.getBoundingClientRect();
-      setRightSpacerWidth(Math.ceil(rect.width));
-    };
-
-    measure();
-
-    // Keep it synced on responsive changes.
-    const ro = new ResizeObserver(() => measure());
-    ro.observe(el);
-    window.addEventListener("resize", measure);
-
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", measure);
-    };
-  }, []);
-
   return (
     <>
       <TargetCursor
@@ -48,57 +24,41 @@ function App() {
       />
 
       {/* Background effects */}
-      <FloatingLines
-        linesGradient={["#2cdb29", "#000000", "#8f8990"]}
-        animationSpeed={1}
-        interactive
-        bendRadius={5}
-        bendStrength={-0.9}
-        mouseDamping={0.06}
-        parallax
-        parallaxStrength={0.3}
-      />
-
-      {/* Navigation - Fixed at bottom */}
-      <div
-        className="app-bottom-bar"
-        style={{
-          position: "fixed",
-          left: 0,
-          right: 0,
-          bottom: "2rem",
-          zIndex: 99999,
-          pointerEvents: "none",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1400,
-            margin: "0 auto",
-            padding: "0 2rem",
-            display: "flex",
-            alignItems: "flex-end",
-            justifyContent: "space-between",
-          }}
-        >
-          <div ref={contactWrapRef} style={{ pointerEvents: "auto" }}>
-            <ContactMe />
-          </div>
-
+      <Suspense
+        fallback={
           <div
+            aria-hidden="true"
             style={{
-              pointerEvents: "auto",
-              flex: 1,
-              display: "flex",
-              justifyContent: "center",
+              position: "fixed",
+              inset: 0,
+              zIndex: -1,
+              pointerEvents: "none",
             }}
-          >
-            <Navbar />
-          </div>
+          />
+        }
+      >
+        <FloatingLines
+          linesGradient={["#2cdb29", "#000000", "#8f8990"]}
+          animationSpeed={1}
+          interactive
+          bendRadius={5}
+          bendStrength={-0.9}
+          mouseDamping={0.06}
+          parallax
+          parallaxStrength={0.3}
+        />
+      </Suspense>
 
-          {/* Right spacer mirrors ContactMe width so Dock stays truly centered */}
-          <div aria-hidden="true" style={{ width: rightSpacerWidth }} />
+      {/* Classic top navbar (sticky) */}
+      <header className="app-top-bar" aria-label="Top navigation">
+        <div className="app-top-bar__inner">
+          <Navbar />
         </div>
+      </header>
+
+      {/* ContactMe: fixed bottom-left (original placement) */}
+      <div className="app-contact-widget" aria-label="Contact">
+        <ContactMe />
       </div>
 
       {/* Click Spark Effect */}
@@ -110,12 +70,14 @@ function App() {
         duration={400}
       >
         {/* Main content */}
-        <main>
+        <main style={{ paddingTop: "92px" }}>
           <Hero />
-          <About />
-          <BounceGallery />
-          <Education />
-          <Experience />
+          <Suspense fallback={null}>
+            <About />
+            <BounceGallery />
+            <Education />
+            <Experience />
+          </Suspense>
         </main>
       </ClickSpark>
     </>

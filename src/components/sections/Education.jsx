@@ -50,6 +50,9 @@ const Education = () => {
                   src={item.logoSrc}
                   alt={item.logoAlt}
                   loading="lazy"
+                  decoding="async"
+                  width={80}
+                  height={80}
                 />
               </div>
               <div className="timeline-content">

@@ -3,7 +3,7 @@ import "./ContactMe.css";
 
 const CONTACT = {
   email: "rasmus.linde@voco.ee",
-  phone: "+372 555 58714",
+  phone: "+372 5555 8714",
   location: "Tartu, Estonia",
   github: {
     label: "github.com/rasmuslinde-design",
@@ -39,7 +39,9 @@ const ContactMe = () => {
   const [isPinned, setIsPinned] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [phoneCopied, setPhoneCopied] = useState(false);
   const copiedTimerRef = useRef(null);
+  const phoneCopiedTimerRef = useRef(null);
 
   const isOpen = isPinned || isHovering;
 
@@ -47,6 +49,9 @@ const ContactMe = () => {
     return () => {
       if (copiedTimerRef.current) {
         window.clearTimeout(copiedTimerRef.current);
+      }
+      if (phoneCopiedTimerRef.current) {
+        window.clearTimeout(phoneCopiedTimerRef.current);
       }
     };
   }, []);
@@ -61,6 +66,22 @@ const ContactMe = () => {
       copiedTimerRef.current = window.setTimeout(() => setCopied(false), 1200);
     } catch {
       // No-op: if copy fails, user can still click mailto.
+    }
+  };
+
+  const onCopyPhone = async () => {
+    try {
+      await copyToClipboard(CONTACT.phone);
+      setPhoneCopied(true);
+      if (phoneCopiedTimerRef.current) {
+        window.clearTimeout(phoneCopiedTimerRef.current);
+      }
+      phoneCopiedTimerRef.current = window.setTimeout(
+        () => setPhoneCopied(false),
+        1200,
+      );
+    } catch {
+      // No-op
     }
   };
 
@@ -112,9 +133,18 @@ const ContactMe = () => {
 
           <div className="contact-me__row">
             <span className="contact-me__label">Phone</span>
-            <a className="contact-me__link" href={`tel:${CONTACT.phone}`}>
-              {CONTACT.phone}
-            </a>
+            <div className="contact-me__value">
+              <a className="contact-me__link" href={`tel:${CONTACT.phone}`}>
+                {CONTACT.phone}
+              </a>
+              <button
+                type="button"
+                className="contact-me__pill"
+                onClick={onCopyPhone}
+              >
+                {phoneCopied ? "Copied" : "Copy"}
+              </button>
+            </div>
           </div>
 
           <div className="contact-me__row">

@@ -1,10 +1,10 @@
 :root {
   --font-body:
-    "Roboto", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial,
-    "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    "Geist Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
   --font-heading:
-    "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial,
-    "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    "Geist Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 html,

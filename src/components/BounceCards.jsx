@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import "./BounceCards.css";
 import StarBorder from "./StarBorder";
+import { OptimizedPicture } from "../lib/optimizedImage.jsx";
 
 export default function BounceCards({
   className = "",
@@ -176,7 +177,16 @@ export default function BounceCards({
             speed={hoveredIdx === idx ? "5.6s" : "7s"}
             thickness={3}
           >
-            <img className="image" src={src} alt={`card-${idx}`} />
+            <OptimizedPicture
+              src={src}
+              alt={`card-${idx}`}
+              className="image"
+              widths={[320, 480, 768]}
+              sizes="(max-width: 768px) 90vw, 640px"
+              loading="lazy"
+              decoding="async"
+              style={{ objectFit: "cover" }}
+            />
 
             <div className="bounceCardsOverlay" aria-hidden="true">
               {!!labels[idx] && (

@@ -1,152 +1,131 @@
-# Rasmus Linde - E-Portfolio
+# eportfoolio — Rasmus Linde
 
-A modern, interactive portfolio website built with React and ReactBits.dev components.
+Personal e-portfolio built with **React + Vite**.
 
-## 🚀 Features
+This repo includes an automated **image optimization pipeline** and several production-safe performance improvements (code-splitting/lazy loading) while keeping the UI stable across desktop + mobile.
 
-- **Floating Lines Background** - Interactive animated background with mouse tracking
-- **Click Spark Effect** - Particle effects on mouse clicks
-- **Smooth Navigation** - Fixed navbar with smooth scrolling
-- **Responsive Design** - Works on all devices (mobile, tablet, desktop)
-- **WCAG Accessible** - Meets accessibility standards
-- **Fast Performance** - Optimized for 1-3 second load times
+## Highlights
 
-## 🎨 Color Scheme
+- Responsive UI (desktop + mobile)
+- Animated background + micro-interactions
+- Modal/pop-up UX that doesn’t get blocked by the navbar (mobile-safe)
+- **Automatic image optimization** (AVIF/WebP) on build/preview
+- **Safe code splitting** to reduce initial JS
 
-- Primary: `#2cdb29` (Neon Green)
-- Background: `#000000` (Black)
-- Accent: `#8f8990` (Gray)
+## Tech stack
 
-## 📦 Tech Stack
-
-- React 18
+- React
 - Vite
-- CSS3 (with animations)
-- ReactBits.dev components
+- CSS (custom)
+- `three` (background)
+- `motion` (UI effects)
+- `gsap` (animations)
+- `lenis` (scroll)
 
-## 🛠️ Development
+## Getting started
 
-### Install dependencies
+### Install
 
 ```bash
 npm install
 ```
 
-### Run development server
+### Dev server
 
 ```bash
 npm run dev
 ```
 
-### Build for production
+### Lint
+
+```bash
+npm run lint
+```
+
+### Build
+
+`build` also runs the image optimizer.
 
 ```bash
 npm run build
 ```
 
-### Preview production build
+### Preview (production build)
+
+`preview` also runs the image optimizer.
 
 ```bash
 npm run preview
 ```
 
-## 📁 Project Structure
+## Image optimization (AVIF/WebP)
+
+Images under these folders are processed:
+
+- `public/assets/**`
+- `src/assets/**`
+
+The optimizer outputs to:
+
+- `public/optimized/**`
+
+Script:
+
+- `scripts/optimize-images.mjs`
+
+Notes:
+
+- Generates AVIF + WebP.
+- For large images, it generates responsive widths (currently `480/768/1024/1280`).
+- A manifest is written to `public/optimized/manifest.json`.
+
+### Using optimized images in React
+
+Use `OptimizedPicture`:
+
+- `src/lib/optimizedImage.jsx`
+
+It produces a `<picture>` with AVIF/WebP `srcset` and always falls back to the original `src` to avoid broken images.
+
+## Performance notes
+
+### Code splitting
+
+Some heavier parts are lazy-loaded in `src/App.jsx`:
+
+- below-the-fold sections (e.g. About/Education/Experience)
+- the animated Three.js background (`FloatingLines`)
+
+This keeps initial JS smaller, without changing the visible UI.
+
+## Modal / pop-up layering (mobile fix)
+
+On mobile, the navbar burger hit-area must never block modal close buttons.
+
+This project uses body attributes to coordinate layering:
+
+- `data-about-modal-open` (About section modals)
+- `data-bounce-modal-open` (BounceGallery modal)
+
+When a modal is open, fixed UI (navbar + contact widget) is pushed behind the overlay via CSS in `src/App.css`.
+
+## Project structure (high level)
 
 ```
+public/
+  assets/                # source images
+  optimized/             # generated AVIF/WebP output
+scripts/
+  optimize-images.mjs    # sharp-based optimizer
 src/
-├── components/
-│   ├── backgrounds/
-│   │   ├── FloatingLines.jsx    # Animated background
-│   │   └── FloatingLines.css
-│   ├── effects/
-│   │   ├── ClickSpark.jsx       # Click particle effect
-│   │   └── ClickSpark.css
-│   ├── sections/
-│   │   ├── Hero.jsx             # Landing section
-│   │   ├── About.jsx            # About me
-│   │   ├── Skills.jsx           # Skills & languages
-│   │   ├── Education.jsx        # Education timeline
-│   │   ├── Experience.jsx       # Work experience
-│   │   ├── Projects.jsx         # Portfolio projects
-│   │   └── Contact.jsx          # Contact info
-│   ├── Navbar.jsx               # Navigation
-│   └── Navbar.css
-├── App.jsx
-├── App.css
-└── index.css
+  components/
+  lib/
+    optimizedImage.jsx   # <OptimizedPicture />
+  App.jsx
+  App.css
+  main.jsx
 ```
 
-## ✏️ Customization
+## Deployment
 
-### Adding New ReactBits Components
-
-1. Create new component in `src/components/backgrounds/` or `src/components/effects/`
-2. Import in `App.jsx`
-3. Add to JSX structure
-
-Example:
-
-```jsx
-import NewEffect from "./components/effects/NewEffect";
-
-function App() {
-  return (
-    <>
-      <FloatingLines />
-      <ClickSpark />
-      <NewEffect /> {/* Add here */}
-      ...
-    </>
-  );
-}
-```
-
-### Updating Content
-
-- **Personal info**: Edit `src/components/sections/Hero.jsx` and `About.jsx`
-- **Skills**: Update the `skills` array in `src/components/sections/Skills.jsx`
-- **Projects**: Update the `projects` array in `src/components/sections/Projects.jsx`
-- **Contact**: Edit `src/components/sections/Contact.jsx`
-
-### Changing Colors
-
-Global colors are used throughout. To change the color scheme, search and replace:
-
-- `#2cdb29` (green) → your primary color
-- `#8f8990` (gray) → your accent color
-- `#000000` (black) → your background color
-
-## 🖼️ Adding Your Logo
-
-Replace the placeholder SVG logos in `/public/assets/`:
-
-- `logo-light.svg` - For light backgrounds
-- `logo-dark.svg` - For dark backgrounds
-
-## 📝 To-Do
-
-- [ ] Replace placeholder logo with actual logo images
-- [ ] Add real project details from GitHub
-- [ ] Add project screenshots/images
-- [ ] Test on multiple browsers
-- [ ] Run performance tests
-- [ ] Deploy to hosting service
-
-## 🌐 Deployment
-
-This project can be deployed to:
-
-- Vercel
-- Netlify
-- GitHub Pages
-- Any static hosting service
-
-## 📧 Contact
-
-- Email: rasmuslinde00@gmail.com
-- GitHub: [rasmuslinde-design](https://github.com/rasmuslinde-design)
-- Location: Tartu, Estonia
-
----
-
-Built with ❤️ using React & ReactBits.dev
+This is a static Vite build. Deploy `dist/` to any static host (Vercel/Netlify/GitHub Pages/etc.).
