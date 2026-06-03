@@ -84,6 +84,21 @@
   border-radius: 0;
 }
 
+/* Desktop: ensure the portrait isn't cropped awkwardly (no "half head" view) */
+@media (min-width: 1100px) {
+  .about-heroImageFrame {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+  }
+
+  .about-heroImage {
+    height: 100%;
+    object-fit: cover;
+    /* Push crop slightly down so the top of the head stays visible */
+    object-position: center 35%;
+  }
+}
+
 .about-heroCaption {
   flex: 0 0 auto;
 }
