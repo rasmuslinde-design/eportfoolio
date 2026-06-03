@@ -121,3 +121,14 @@
     padding-right: 1.1rem;
   }
 }
+
+/* See kood rakendub ainult suurtele ekraanidele (alates laiusest 1400px) */
+@media (min-width: 1400px) {
+  #hero.hero {
+    min-height: 100vh; /* Paneb hero sektsiooni alati võtma 100% ekraani kõrgusest */
+    display: flex;
+    align-items: center; /* Tsentreerib su nime ja logo täpselt ekraani keskele */
+    justify-content: center;
+    padding-bottom: 100px; /* Lükkab alumise ääre (About Me) veelgi sügavamale alla */
+  }
+}
