@@ -164,7 +164,7 @@ export default function PillNav({
                 <a
                   role="menuitem"
                   href={item.href}
-                  className={`pill${activeHref === item.href ? " is-active" : ""}`}
+                  className={`pill${activeHref && activeHref === item.href ? " is-active" : ""}`}
                 >
                   <span className="hover-circle" aria-hidden="true" />
                   <span className="label-stack">

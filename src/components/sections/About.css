@@ -11,7 +11,7 @@
 
 .about-heroRow {
   display: grid;
-  grid-template-columns: minmax(280px, 520px) minmax(320px, 560px);
+  grid-template-columns: minmax(280px, 520px) 1fr;
   gap: 2rem;
   align-items: start;
 }
@@ -64,15 +64,14 @@
   margin-bottom: auto;
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.55);
+  /* Avoid the square-ish "shadow box" artifact around the image */
+  box-shadow: none;
   overflow: hidden;
 }
 
 .about-heroImageFrame:hover {
   border-color: rgba(255, 255, 255, 1);
-  box-shadow:
-    0 18px 70px rgba(0, 0, 0, 0.55),
-    0 0 20px rgba(255, 255, 255, 0.3);
+  box-shadow: none;
 }
 
 .about-heroImage {
@@ -148,14 +147,25 @@
 .about-static-cards {
   display: grid;
   gap: clamp(16px, 2.5vh, 28px);
-  max-width: 760px;
+  max-width: none;
   margin: 0;
 }
 
 /* Keep the same visual card, but make it narrower vs full-width */
 .about-stack-card {
-  max-width: 760px;
+  max-width: none;
   margin: 0;
+}
+
+/* On large screens, let the right-side content breathe and reach toward the edge */
+@media (min-width: 1100px) {
+  .about-heroRow {
+    gap: clamp(2rem, 3vw, 4rem);
+  }
+
+  .about-right {
+    padding-right: clamp(12px, 2vw, 28px);
+  }
 }
 
 @media (max-width: 900px) {
@@ -202,15 +212,14 @@
   background: rgba(0, 0, 0, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 22px;
-  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.55);
+  /* Avoid square shadow artifacts on the right edge of the cards */
+  box-shadow: none;
   overflow: hidden;
 }
 
 .about-interactive-card:hover {
   border-color: rgba(255, 255, 255, 1);
-  box-shadow:
-    0 18px 70px rgba(0, 0, 0, 0.55),
-    0 0 20px rgba(255, 255, 255, 0.3);
+  box-shadow: none;
 }
 
 .about-card-header {

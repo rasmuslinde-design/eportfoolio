@@ -162,23 +162,14 @@
   background: transparent;
 }
 
-/* Active tab: dark pill + white text (matches reference) */
+/* Active tab styling removed: keep all pills identical (always white). */
 .pill.is-active {
-  background: var(--base, #000);
-  color: var(--hover-text, #fff);
+  background: var(--pill-bg, #fff);
+  color: var(--pill-text, var(--base, #000));
 }
 
 .pill.is-active::after {
-  content: "";
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 12px;
-  height: 12px;
-  background: var(--base, #000);
-  border-radius: 50px;
-  z-index: 4;
+  content: none;
 }
 
 .desktop-only {
