@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
@@ -33,3 +33,10 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
           server-dir: htdocs/
+          # These help reduce intermittent "Timeout (control socket)" failures.
+          protocol: ftps
+          timeout: 600000
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/node_modules/**
